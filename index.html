@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Folia · Buildings, Evolved (concept)</title>
+<link rel="icon" href="assets/cropped-favicon-2-300x300.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F5F2; --paper-2:#ECEBE6; --ink:#222222; --muted:#6E6A66; --rule:#DDDAD3;
+  --green:#60A845; --green-d:#0C6938; --taupe:#867870; --blue:#125788; --teal:#0196A9;
+  --leaf:#A0BC79; --steel:#4E5A61; --glass:#C8E9EC; --panel:#E4E6E7; --amber:#C98A12;
+  /* Folia plan colors */ --p-class:#A0BC79; --p-suite:#C4D5AB; --p-large:#C8E9EC; --p-support:#8B9DBF; --p-rest:#FAA81B; --p-corr:#FED9A1;
+  --mono:'IBM Plex Mono',ui-monospace,monospace; --sans:'Montserrat',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.muted{color:var(--muted)}
+h1,h2,h3{font-weight:600;letter-spacing:-.01em;margin:0}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.08}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-d);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:22px;height:2px;background:var(--green)}
+.sample{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;border:1px dashed var(--amber);color:var(--amber);padding:2px 7px;border-radius:3px;vertical-align:middle}
+.pub{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--green);color:var(--green);padding:2px 7px;border-radius:3px;vertical-align:middle}
+
+/* concept banner + nav */
+.banner{background:var(--ink);color:#DADFD9;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-align:center;padding:7px 12px}
+.banner b{color:#A0BC79;font-weight:500}
+nav{position:sticky;top:0;z-index:50;background:rgba(243,241,234,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:flex-end;gap:10px;font-weight:700;letter-spacing:.32em;font-size:18px;text-decoration:none}
+.logo svg{width:26px;height:26px}
+.logo small{font-family:var(--mono);font-weight:400;letter-spacing:.06em;font-size:11px;color:var(--muted);margin-left:6px;line-height:1;margin-bottom:1px}
+.logo img{display:block}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:13.5px;font-weight:500}
+nav ul a{text-decoration:none;opacity:.8} nav ul a:hover{opacity:1;color:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 20px;border-radius:999px;border:0;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--green-d)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+
+/* hero */
+.hero{padding:36px 0 24px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
+.hero-photo{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(18,87,136,.18)}
+.hero-photo>img{display:block;width:100%;height:400px;object-fit:cover}
+.hero-badge{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.94);border-radius:10px;padding:12px 16px;display:flex;gap:12px;align-items:center}
+.hero-badge img{width:34px;height:34px;object-fit:contain}
+.hero-badge b{display:block;font-size:15px} .hero-badge span{font-size:12px;color:var(--muted)}
+.tray{margin-top:26px}
+.quote{margin:30px 0 0;padding:26px 30px;background:#fff;border-left:4px solid var(--green);border-radius:0 12px 12px 0;display:grid;grid-template-columns:1fr 260px;gap:30px;align-items:center}
+.quote p{margin:0;font-size:18px;line-height:1.5;color:#333}
+.quote cite{font-style:normal;font-size:13px;color:var(--muted)}
+.quote cite b{display:block;font-size:15px;color:var(--ink);letter-spacing:.04em;text-transform:uppercase}
+@media (max-width:980px){.quote{grid-template-columns:1fr}}
+.parts{grid-template-columns:repeat(7,1fr)!important}
+.proof img{width:38px;height:38px;object-fit:contain;display:block;margin-bottom:14px}
+.proof img.inv{background:var(--green);border-radius:6px;padding:5px}
+.venn-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end}
+.sys{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.sys div{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:16px}
+.sys .ico{display:flex;width:52px;height:52px;border-radius:10px;background:var(--green);align-items:center;justify-content:center;margin-bottom:10px}
+.sys .ico img{width:34px;height:34px;object-fit:contain}
+.sys b{display:block;font-size:15px} .sys small{font-size:12.5px;color:var(--muted);line-height:1.4;display:block;margin-top:4px}
+.hero h1{font-size:clamp(40px,6vw,78px);line-height:1.0;font-weight:600;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero h1{color:var(--taupe)}
+.hero p.lead{font-size:18px;max-width:520px;margin:18px 0 24px;color:#3A403C}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.tray{background:#FBFAF6;border:1px solid var(--rule);border-radius:10px;padding:22px;position:relative;
+  background-image:linear-gradient(var(--paper-2) 1px,transparent 1px),linear-gradient(90deg,var(--paper-2) 1px,transparent 1px);background-size:24px 24px}
+.tray-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.part{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:12px;transition:transform .3s, box-shadow .3s}
+.part:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(31,37,34,.08)}
+.part svg{width:100%;height:58px;display:block}
+.part b{display:block;font-size:13px;font-weight:600;margin-top:6px}
+.part span{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);margin-top:26px}
+.proof div{padding:28px 18px 0 0}
+.proof b{display:block;font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin-bottom:4px}
+.proof span{display:block;font-size:13px;line-height:1.4;color:var(--muted)}
+
+/* exploded build */
+#build .stage{height:520px;background:#fff;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+#build .stage svg{max-height:none;height:100%}
+#build .legend{top:16px;right:18px;z-index:2}
+#build .final-photo{right:18px;bottom:18px}
+.bbar{display:flex;align-items:center;gap:18px;margin:18px 0 12px}
+.bnav{display:flex;align-items:center;gap:8px;flex:none}
+.arrowbtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--ink);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.arrowbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.arrowbtn:hover{background:var(--ink);color:#fff}
+.playbtn{flex:none;width:52px;height:52px;border-radius:50%;border:0;background:var(--green);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.playbtn:hover{background:var(--green-d);transform:scale(1.05)}
+.playbtn svg{width:22px;height:22px;fill:currentColor}
+.bcap{display:flex;gap:14px;align-items:baseline;min-height:52px}
+.bcap .n{font-family:var(--mono);font-size:13px;color:var(--green-d);font-weight:500}
+.bcap b{font-size:18px;font-weight:600}
+.bcap .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;margin-left:10px;padding:2px 7px;border-radius:3px;vertical-align:2px}
+.bcap p{margin:2px 0 0;font-size:14px;color:#4A504C}
+.stepper{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.stepper button{background:none;border:0;padding:0;text-align:left;cursor:pointer;font-family:var(--sans);display:flex;flex-direction:column;justify-content:flex-start;align-self:start}
+.stepper .trk{display:block;height:5px;border-radius:3px;background:var(--rule);overflow:hidden}
+.stepper .trk i{display:block;height:100%;width:0;background:var(--green)}
+.stepper span.l{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-top:7px;line-height:1.25;transition:color .2s}
+.stepper span.l em{font-style:normal;font-family:var(--mono);font-weight:400;font-size:11px;margin-right:4px}
+.stepper button.on span.l,.stepper button:hover span.l{color:var(--ink)}
+@media (max-width:980px){.stepper{grid-template-columns:repeat(4,1fr);row-gap:12px}#build .stage{height:380px}}
+.stick{position:sticky;top:64px;height:calc(100vh - 64px);display:grid;grid-template-columns:380px 1fr;gap:24px;align-items:center}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--rule);opacity:.38;transition:opacity .35s}
+.steps li.on{opacity:1}
+.steps li .n{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px}
+.steps li.on .n{color:var(--green);font-weight:500}
+.steps li b{font-size:15px;font-weight:600}
+.steps li .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;margin-left:8px;padding:1px 6px;border-radius:3px;vertical-align:2px}
+.tag.off{background:#E4F0DC;color:var(--green-d)} .tag.on{background:#E1E9F1;color:var(--blue)}
+.steps li p{grid-column:2;margin:0;font-size:13.5px;color:#4A504C;max-height:0;overflow:hidden;transition:max-height .4s}
+.steps li.on p{max-height:80px}
+.steps li{cursor:pointer}
+.steps li:hover{opacity:.75}
+.stepnav{display:flex;align-items:center;gap:10px;margin-top:16px}
+.stepnav button{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--ink);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.stepnav button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.stepnav button:hover{background:var(--ink);color:#fff}
+.stepnav button.primary{background:var(--green);border-color:var(--green);color:#fff}
+.stepnav button.primary:hover{background:var(--green-d);border-color:var(--green-d)}
+.stepnav button:disabled{opacity:.3;cursor:default;background:#fff;color:var(--ink);border-color:var(--ink)}
+.stepnav span{font-size:13px;color:var(--muted);flex:1}
+.stepnav .skip{font-size:13px;font-weight:600;color:var(--green-d);text-decoration:none;white-space:nowrap}
+.stepnav .skip:hover{text-decoration:underline}
+.stepnav .bounce svg{animation:bob 1.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+.stage{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.stage svg{width:100%;max-height:82vh;overflow:visible}
+.final-photo{position:absolute;right:0;bottom:56px;width:300px;margin:0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.15);opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+.final-photo.on{opacity:1;transform:none}
+.final-photo img{display:block;width:100%;height:170px;object-fit:cover}
+.final-photo figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);padding:8px 10px}
+.meter{position:absolute;left:0;right:0;bottom:22px;display:flex;align-items:center;gap:14px}
+.meter .bar{flex:1;height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.meter .bar i{display:block;height:100%;width:0;background:var(--green)}
+.legend{position:absolute;top:24px;right:0;display:flex;gap:16px}
+.legend span{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+/* sections */
+section.block{padding:64px 0;border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:26px}
+.sec-head p{margin:0;color:#3A403C;font-size:17px}
+
+/* same kit */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tab{font-family:var(--sans);font-weight:600;font-size:14px;padding:10px 16px;border-radius:999px;border:1.5px solid var(--rule);background:#fff;cursor:pointer;transition:all .2s}
+.tab:hover{border-color:var(--ink)}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.kit{display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:start}
+.kit-stage{background:#FFFFFF;border:1px solid var(--rule);border-radius:12px;height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.kit-stage svg{width:100%;height:100%}
+.kit-info h3{font-size:28px;margin-bottom:6px}
+.kit-photo{margin:0 0 16px;border-radius:10px;overflow:hidden;position:relative}
+.kit-photo img{display:block;width:100%;height:180px;object-fit:cover}
+.kit-photo figcaption{position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.9);font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px}
+.kit-info .sf{font-size:36px!important}
+.kit-info .sf{font-size:44px;font-weight:600;letter-spacing:-.02em;margin:14px 0 2px}
+.counts{margin-top:22px;border-top:1px solid var(--rule)}
+.counts div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.counts b{font-family:var(--mono);font-weight:500}
+.fade{animation:rise .55s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* floor */
+.floor{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center}
+.presets{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.preset{text-align:left;font-family:var(--sans);background:#fff;border:1.5px solid var(--rule);border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .2s}
+.preset b{display:block;font-size:15px}
+.preset span{font-size:13px;color:var(--muted)}
+.preset.on{border-color:var(--green);box-shadow:0 0 0 3px #E3EEDD}
+.ptabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.ptabs button{font-family:var(--sans);font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:999px;border:1.5px solid var(--rule);background:#fff;cursor:pointer}
+.ptabs button.on{background:var(--green-d);color:#fff;border-color:var(--green-d)}
+.plan-wrap{background:#FFFFFF;border:1px solid var(--rule);border-radius:12px;padding:22px}
+.plan rect.room{transition:x .7s cubic-bezier(.6,0,.2,1),width .7s cubic-bezier(.6,0,.2,1),fill .5s;stroke:var(--ink);stroke-width:2}
+.plan text{transition:x .7s cubic-bezier(.6,0,.2,1),opacity .4s;font-family:var(--sans)}
+
+/* calendars */
+.cal{background:#FBFAF6;border:1px solid var(--rule);border-radius:12px;padding:30px 30px 24px}
+.cal-row{display:grid;grid-template-columns:150px 1fr 90px;gap:16px;align-items:center;margin:18px 0}
+.cal-row b{font-size:15px}
+.track{position:relative;height:38px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/36 - 1px),var(--rule) calc(100%/36 - 1px) calc(100%/36))}
+.seg{position:absolute;top:4px;height:30px;border-radius:4px;font-size:11.5px;font-weight:600;color:#fff;display:flex;align-items:center;padding:0 10px;white-space:nowrap;overflow:hidden;width:0;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
+.seg.l2{top:22px;height:14px;font-size:0}
+.cal-axis{display:grid;grid-template-columns:150px 1fr 90px;gap:16px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.cal-axis div:nth-child(2){display:flex;justify-content:space-between}
+.saved{font-size:22px;font-weight:600;color:var(--green)}
+
+/* configurator */
+#configure{background:#14301F;color:#EEF0EC;border-top:0}
+#configure .kicker{color:var(--leaf)} #configure .kicker::before{background:var(--leaf)}
+#configure .sec-head p{color:#C4CAC4}
+.cfg{display:grid;grid-template-columns:260px 1fr 320px;gap:22px}
+.palette, .readout, .site{background:#1B3B28;border:1px solid #2B5038;border-radius:12px;padding:18px}
+.palette h4,.readout h4{margin:0 0 12px;font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#9AA39C}
+.tile{display:flex;justify-content:space-between;align-items:center;width:100%;background:#224732;border:1px solid #33603F;color:#EEF0EC;border-radius:8px;padding:11px 12px;margin-bottom:8px;cursor:grab;font-family:var(--sans);font-size:14px;font-weight:600;transition:all .2s}
+.tile:hover{border-color:var(--leaf);transform:translateX(3px)}
+.tile span{font-family:var(--mono);font-weight:400;font-size:11.5px;color:#A9B2AB}
+.tile i{width:12px;height:12px;border-radius:3px;display:inline-block;margin-right:8px;vertical-align:-1px}
+.shapes{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.shapes button{display:flex;align-items:center;gap:8px;background:#224732;border:1px solid #33603F;color:#C4CAC4;border-radius:8px;padding:7px 9px;font-family:var(--sans);font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s}
+.shapes button svg{width:30px;height:21px;flex:none}
+.shapes button svg *{fill:none;stroke:currentColor;stroke-width:2}
+.shapes button:hover{border-color:var(--leaf)}
+.shapes button.on{background:var(--leaf);color:var(--ink);border-color:var(--leaf)}
+.seg-ctl{display:flex;background:#224732;border-radius:999px;padding:4px;margin:16px 0 8px}
+.seg-ctl button{flex:1;border:0;background:transparent;color:#C4CAC4;font-family:var(--sans);font-weight:600;font-size:13px;padding:8px;border-radius:999px;cursor:pointer}
+.seg-ctl button.on{background:var(--leaf);color:var(--ink)}
+.site{display:flex;flex-direction:column}
+.site-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.iso-cfg{height:340px;display:flex;align-items:center;justify-content:center;position:relative;cursor:grab;touch-action:pan-y;user-select:none}
+.iso-cfg.dragging{cursor:grabbing}
+.rotctl{position:absolute;right:6px;bottom:6px;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:#9AA39C}
+.rotctl button{width:32px;height:32px;border-radius:50%;border:1px solid #3E6A4B;background:#224732;color:#EEF0EC;font-size:16px;cursor:pointer}
+.rotctl button:hover{background:#A0BC79;color:#222}
+.iso-cfg svg{width:100%;height:100%}
+.planbar{display:flex;align-items:center;gap:12px;margin:6px 0 6px;flex-wrap:wrap}
+.ftabs{display:flex;gap:4px}
+.ftabs button{font-family:var(--sans);font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;border:1px solid #3E6A4B;background:#224732;color:#C4CAC4;cursor:pointer}
+.ftabs button.on{background:#A0BC79;color:#222;border-color:#A0BC79}
+.phint{font-size:12px;color:#9FB5A2;flex:1}
+.schedbtn{display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;border:0;background:#fff;color:#0C6938;cursor:pointer}
+.schedbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+.schedbtn:hover{background:#A0BC79;color:#222}
+#cfgPlan{width:100%;display:block;margin-bottom:8px}
+#cfgPlan .rm{cursor:pointer;transition:opacity .15s}
+#cfgPlan .rm:hover{opacity:.85}
+.modal .card.sched{max-width:860px}
+.xbtn{border:0;background:#ECEBE6;width:34px;height:34px;border-radius:50%;font-size:20px;cursor:pointer;flex:none}
+.g-axis2{display:grid;grid-template-columns:170px 1fr;font-family:var(--mono);font-size:10.5px;color:var(--muted);margin:18px 0 4px}
+.g-axis2 .t{position:relative;height:16px}
+.g-axis2 .t span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.g-row2{display:grid;grid-template-columns:170px 1fr;align-items:center;padding:6px 0;border-top:1px solid var(--rule);font-size:13px}
+.g-row2 .tr{position:relative;height:22px;background:repeating-linear-gradient(90deg,transparent 0 calc(var(--m) - 1px),#EEECE6 calc(var(--m) - 1px) var(--m))}
+.g-row2 .b{position:absolute;top:3px;height:16px;border-radius:3px}
+.g-row2 .ms{position:absolute;top:2px;width:16px;height:16px;background:var(--green-d);transform:translateX(-50%) rotate(45deg)}
+.g-row2.conv{color:var(--muted)}
+.planstrip{min-height:60px;border:1.5px dashed #3E6A4B;border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;transition:background .2s}
+.planstrip.drag{background:#2A5236;border-color:var(--leaf)}
+.planstrip:empty::before{content:"Drag or click rooms to add them";color:#7F8A82;font-size:13px;margin:auto}
+.chip{display:flex;align-items:center;gap:8px;padding:7px 9px 7px 11px;border-radius:6px;font-size:12.5px;font-weight:600;color:var(--ink);animation:rise .35s}
+.chip button{border:0;background:rgba(0,0,0,.12);width:18px;height:18px;border-radius:50%;cursor:pointer;font-size:12px;line-height:18px;padding:0;color:var(--ink)}
+.stat{padding:12px 0;border-bottom:1px solid #2B5038}
+.stat:last-of-type{border-bottom:0}
+.stat label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9AA39C}
+.stat b{font-size:26px;font-weight:600;letter-spacing:-.01em}
+.stat small{display:block;color:#A9B2AB;font-size:12.5px}
+.badge{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:8px;font-size:13px;margin:12px 0 14px}
+.badge.ok{background:#2E4A35;color:#D9EFD0} .badge.warn{background:#4A3E26;color:#F2E2BE} .badge.note{background:transparent;color:#9FB5A2;padding:4px 0;font-size:12.5px}
+.badge i{font-style:normal;font-weight:700}
+input[type=month]{background:#224732;border:1px solid #33603F;color:#EEF0EC;border-radius:6px;padding:6px 8px;font-family:var(--sans);font-size:13px}
+.cfg .btn{width:100%;justify-content:center;background:var(--leaf);color:var(--ink)}
+.cfg .btn:hover{background:#B6D99B}
+.fine{font-size:12px;color:#8E978F;margin-top:18px;max-width:900px}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(20,24,22,.6);display:none;align-items:center;justify-content:center;z-index:80;padding:20px}
+.modal.on{display:flex}
+.modal .card{background:var(--paper);color:var(--ink);border-radius:14px;max-width:460px;width:100%;padding:28px;animation:rise .35s}
+.modal h3{font-size:22px;margin-bottom:8px}
+.modal ul{padding-left:18px;font-size:14px}
+
+section.contact{background:#0C6938;color:#fff;padding:44px 0}
+section.contact .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+section.contact .kicker::before{background:#A0BC79}
+.cinfo{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.cinfo .btn{background:#fff;color:#0C6938}
+.cinfo span{font-size:13px;color:#CFE3C6}
+footer{padding:28px 0;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s, transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  nav ul{display:none}
+  .hero-grid,.sec-head,.kit,.floor,.cfg{grid-template-columns:1fr}
+  .stick{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-content:start;gap:8px;padding-top:12px}
+  .steps li{display:none} .steps li.on{display:grid}
+  .proof{grid-template-columns:repeat(2,1fr)}
+  .legend{display:none}
+  .cal-row,.cal-axis{grid-template-columns:90px 1fr 60px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="banner">Concept mockup for Blach Construction by Collective Work &middot; <b>Figures marked “sample” are placeholders</b>, not Folia data</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="assets/folia-logo.png" alt="Folia" style="height:34px;width:auto"><small>by Blach Construction</small></a>
+    <ul><li><a href="#build">How it goes together</a></li><li><a href="#kit">Building types</a></li><li><a href="#floor">Flexible plans</a></li><li><a href="#time">Schedule</a></li></ul>
+    <a class="btn" href="#contact">Talk to the Folia team</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">Designed to inspire. Built to last.</div>
+        <h1>Buildings,<br><em>evolved.</em></h1>
+        <p class="lead">Folia is an evolutionary building system that unites the quality and flexibility of conventional construction with the cost and schedule savings of modular.</p>
+        <div class="ctas"><a class="btn" href="#build">See how it goes together &darr;</a><a class="btn ghost" href="#configure">Try the layout tool</a></div>
+      </div>
+      <div class="hero-photo reveal"><img src="assets/hero_image.png" alt="Two-story Folia classroom buildings around a landscaped courtyard">
+        <div class="hero-badge"><img src="assets/timely-construction.png" alt=""><div><b>32,000 sf in 9 months</b><span>Delivered with Folia</span></div></div>
+      </div>
+    </div>
+    <div class="tray reveal">
+      <div class="tray-head"><span class="mono muted">The system &middot; two-story building</span><span class="sample">Sample counts</span></div>
+      <div class="parts" id="parts"></div>
+    </div>
+    <div class="proof">
+      <div><img src="assets/timely-construction.png" alt=""><b>1 yr+</b><span>faster to occupancy*</span></div>
+      <div><img src="assets/roi-bank.png" alt=""><b>10&ndash;20%</b><span>lower cost*</span></div>
+      <div><img src="assets/arrow-on-target.png" alt=""><b>DSA</b><span>Pre-Check approved two-story plan</span></div>
+      <div><img src="assets/pre-engineered-icon.png" alt="" class="inv"><b>50 yr</b><span>typical design life for steel-framed buildings</span></div>
+    </div>
+    <p class="muted" style="font-size:11.5px;margin:14px 0 0">*Standard Folia plans, compared with comparable traditionally designed and built buildings.</p>
+    <blockquote class="quote reveal"><p>&ldquo;We were looking for a superior quality and cost-effective solution to support the enrollment growth at Cupertino High School and Folia fit our needs perfectly&hellip; The overall value we&rsquo;ve received is impressive, saving the District almost $6 million.&rdquo;</p><cite><b>Polly Bove</b>Superintendent, Fremont Union High School District</cite></blockquote>
+  </div>
+</header>
+
+<!-- SYSTEM / VENN -->
+<section class="block" id="system">
+  <div class="wrap venn-grid">
+    <div class="reveal">
+      <div class="kicker">Not modular. Not site-built.</div>
+      <h2>Prefab speed, designed like a custom school.</h2>
+      <p class="muted" style="margin:16px 0 26px;font-size:17px">Modular buildings ship as boxes. Site-built schools take years. Folia sits between them: a pre-engineered system of panels and frames that architects can still design around.</p>
+      <div class="sys">
+        <div><span class="ico"><img src="assets/pre-fab-icon.png" alt=""></span><b>Prefabricated</b><small>Frames and panels made in a controlled shop</small></div>
+        <div><span class="ico"><img src="assets/panelized-icon.png" alt=""></span><b>Panelized</b><small>Wall and roof panels, not shipped boxes</small></div>
+        <div><span class="ico"><img src="assets/pre-engineered-icon.png" alt=""></span><b>Pre-engineered</b><small>A DSA Pre-Check approved two-story plan</small></div>
+      </div>
+    </div>
+    <div class="reveal"><img src="assets/website-venn-diagram-FINAL-e1520980874241.png" alt="Folia between modular and custom site-built construction: lower cost, shorter schedule, better quality, more flexibility" style="width:100%;border-radius:12px;background:#fff;display:block"></div>
+  </div>
+</section>
+
+<!-- EXPLODED BUILD -->
+<section class="block" id="build">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker">How it goes together</div><h2>Made off-site.<br>Assembled in months, not years.</h2></div>
+      <p>Eight steps from foundation to finished classrooms. Press play, or tap any step.</p>
+    </div>
+    <div class="bstage">
+      <div class="stage">
+        <div class="legend"><span><i style="background:#E4F0DC;border:1px solid #0C6938"></i>Made off-site</span><span><i style="background:#E1E9F1;border:1px solid #125788"></i>Built on site</span></div>
+        <figure id="finalPhoto" class="final-photo"><img src="assets/Folia-Two-Story-scaled-1.jpg" alt="Folia two-story building section rendering"><figcaption>The finished building &middot; rendering</figcaption></figure>
+        <svg id="iso" viewBox="-60 -110 980 820" aria-label="Folia building assembling step by step"></svg>
+      </div>
+      <div class="bbar">
+        <div class="bnav"><button id="bPrev" class="arrowbtn" aria-label="Previous step"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button id="play" class="playbtn" aria-label="Play"><svg viewBox="0 0 24 24" id="playIco"><path d="M8 5v14l11-7z"/></svg></button><button id="bNext" class="arrowbtn" aria-label="Next step"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="bcap"><span class="n" id="capN">01</span><div><b id="capT"></b><span class="tag" id="capTag"></span><p id="capD"></p></div></div>
+      </div>
+      <div class="stepper" id="stepper"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAME KIT -->
+<section class="block" id="kit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="kicker">One system, every building</div><h2>Five building types.<br>One set of parts.</h2></div>
+      <p>Classrooms, multipurpose rooms, gyms and science buildings all come from the same frames, panels and glazing. A campus built in phases still looks like one campus.</p>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div class="kit">
+      <div class="kit-stage"><svg id="kitIso" viewBox="-60 -140 980 760"></svg></div>
+      <div class="kit-info" id="kitInfo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOOR -->
+<section class="block" id="floor">
+  <div class="wrap floor">
+    <div class="reveal">
+      <div class="kicker">Plans that change</div>
+      <h2>Move the walls,<br>not the building.</h2>
+      <p class="muted" style="margin-top:16px">Interior walls in a Folia building aren&rsquo;t load-bearing. As programs change, classrooms become suites, labs or a learning commons inside the same shell.</p>
+      <div class="presets" id="presets"></div>
+    </div>
+    <div class="plan-wrap reveal">
+      <div class="ptabs" id="ptabs"><button class="on" data-v="diag">Rearrange</button><button data-v="TwoStory-trimmed.png">Published two-story plan</button><button data-v="OneStory1-trimmed.png">Published one-story plan</button></div>
+      <div id="diagWrap"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span class="mono muted">Upper floor &middot; diagram in Folia&rsquo;s plan colors</span><span class="sample">Diagram, not the Folia plan</span></div>
+      <svg class="plan" id="plan" viewBox="0 0 760 330" style="width:100%"></svg>
+      <p class="muted" style="font-size:13px;margin:10px 0 0">Room sizes from our standard plans: 960, 1,230 and 1,920 sf.</p></div>
+      <div id="pubWrap" style="display:none"><img id="pubImg" src="" alt="Published Folia floor plan" style="width:100%;max-height:420px;object-fit:contain;background:#fff;border-radius:8px"><p class="muted" style="font-size:13px;margin:10px 0 0">Standard Folia plan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDARS -->
+<section class="block" id="time">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="kicker">Two calendars</div><h2>Factory and site work<br>happen at the same time.</h2></div>
+      <p>With a conventional build, each step waits for the one before it. With Folia, a Pre-Checked plan shortens DSA review, and parts are made while the site is prepared. The last sliver in each row is DSA closeout.</p>
+    </div>
+    <div class="cal reveal" id="cal">
+      <div class="cal-row"><b>Conventional</b><div class="track">
+        <div class="seg" data-w="22" style="left:0;background:#8A938C">Design</div>
+        <div class="seg" data-w="25" style="left:22%;background:#6B746D">DSA review</div>
+        <div class="seg" data-w="50" style="left:47%;background:#4C544E">Construction on site</div>
+        <div class="seg" data-w="3" style="left:97%;background:#2E3430" title="DSA closeout"></div>
+      </div><span class="mono">36 mo</span></div>
+      <div class="cal-row"><b>Folia</b><div class="track">
+        <div class="seg" data-w="14" style="left:0;background:#A0BC79;color:#222">Design</div>
+        <div class="seg" data-w="11" style="left:14%;background:var(--green)" title="DSA review, shortened by Pre-Check">DSA (Pre-Check)</div>
+        <div class="seg" data-w="22" style="left:25%;background:var(--green-d)">Factory</div>
+        <div class="seg l2" data-w="22" style="left:25%;background:var(--blue)"></div>
+        <div class="seg" data-w="16" style="left:47%;background:#0A4F2A">Assembly + interiors</div>
+        <div class="seg" data-w="3" style="left:63%;background:#06331B" title="DSA closeout"></div>
+      </div><span class="mono">24 mo</span></div>
+      <div class="cal-axis"><div></div><div><span>0</span><span>6</span><span>12</span><span>18</span><span>24</span><span>30</span><span>36 mo</span></div><div></div></div>
+      <div style="display:flex;justify-content:space-between;align-items:end;margin-top:26px;flex-wrap:wrap;gap:12px">
+        <div><span class="saved">About a year sooner</span><div class="muted" style="font-size:13px">Blue bar: site work running alongside the factory.</div></div>
+        <span class="sample">Illustrative durations &middot; standard Folia vs. comparable site-built</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURATOR -->
+<section class="block" id="configure">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker">Build your campus</div><h2>Sketch a building.<br>See a rough schedule.</h2></div>
+      <p>Add rooms from the Folia system. Area, schedule and the DSA path update as you go. Send the layout to the Folia team to start planning.</p>
+    </div>
+    <div class="cfg">
+      <div class="palette">
+        <h4>Rooms</h4>
+        <div id="tiles"></div>
+        <div class="seg-ctl" id="stories"><button data-s="1">One story</button><button data-s="2" class="on">Two story</button></div>
+        <h4 style="margin-top:14px">Shape</h4>
+        <div class="shapes" id="shapes">
+          <button data-sh="bar" class="on" title="Bar"><svg viewBox="0 0 40 28"><rect x="4" y="10" width="32" height="8"/></svg>Bar</button>
+          <button data-sh="L" title="L-shape"><svg viewBox="0 0 40 28"><path d="M4 4 H12 V16 H36 V24 H4 Z"/></svg>L</button>
+          <button data-sh="U" title="Courtyard"><svg viewBox="0 0 40 28"><path d="M4 4 H12 V16 H28 V4 H36 V24 H4 Z"/></svg>Courtyard</button>
+          <button data-sh="two" title="Two wings"><svg viewBox="0 0 40 28"><rect x="4" y="4" width="32" height="7"/><rect x="4" y="17" width="32" height="7"/></svg>Two wings</button>
+        </div>
+        <button class="tile" id="reset" style="justify-content:center;background:transparent;cursor:pointer">Start with the Pre-Check plan</button>
+      </div>
+      <div class="site">
+        <div class="site-top"><h4 class="mono" style="margin:0;color:#9AA39C;font-weight:500">Your building</h4><span class="mono" style="color:#9AA39C" id="roomCount"></span></div>
+        <div class="iso-cfg"><svg id="cfgIso" viewBox="-60 -40 960 700"></svg>
+          <div class="rotctl"><button id="rotL" aria-label="Rotate left">&#8634;</button><span>Drag to rotate</span><button id="rotR" aria-label="Rotate right">&#8635;</button></div></div>
+        <div class="planbar"><div class="ftabs" id="ftabs"></div><span class="phint">Click two rooms to swap them. The facade follows.</span><button class="schedbtn" id="schedBtn"><svg viewBox="0 0 24 24"><path d="M4 6h10M4 12h14M4 18h7"/></svg>Schedule</button></div>
+        <svg id="cfgPlan" viewBox="0 0 860 230"></svg>
+        <div class="planstrip" id="strip"></div>
+      </div>
+      <div class="readout">
+        <h4>Estimate <span class="sample" style="margin-left:6px">Sample</span></h4>
+        <div class="stat"><label>Gross area</label><b id="oSf">0 sf</b><small>Rooms plus about 25% for restrooms, stairs, elevator and support space</small></div>
+        <div class="stat"><label>Start design</label><input type="month" id="start" value="2027-03"></div>
+        <div class="stat"><label>Students move in</label><b id="oDate">&ndash;</b><small id="oConv"></small></div>
+        <div class="stat"><label>Cost</label><b>10&ndash;20% below</b><small>a comparable site-built building, for standard Folia plans</small></div>
+        <div class="badge" id="badge"></div>
+        <button class="btn" id="send">Send this layout to the Folia team</button>
+      </div>
+    </div>
+    <p class="fine">All estimates on this page are sample placeholders for the concept. A live version would use figures supplied and approved by Blach. Schedule assumes Folia&rsquo;s advantage of at least one year over conventional construction; cost bands are illustrative only.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact"><div class="wrap"><div><div class="kicker" style="color:#A0BC79">Let&rsquo;s chat</div><h2>Talk to the Folia team.</h2></div>
+  <div class="cinfo"><a class="btn" href="mailto:discover@buildfolia.com">discover@buildfolia.com</a><span>408.244.7100 &middot; 2244 Blach Place, Suite 100, San Jose, CA 95131</span></div></div></section>
+<footer>
+  <div class="wrap">
+    <span style="display:flex;align-items:center;gap:14px"><img src="assets/folia-logo.png" alt="Folia" style="height:28px">Designed to inspire. Built to last. &middot; A building system by Blach Construction</span>
+    <span>Concept mockup &middot; Collective Work &middot; 2026</span>
+  </div>
+</footer>
+
+<div class="modal" id="schedModal"><div class="card sched">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px"><div><span class="sample">Illustrative schedule</span><h3 style="margin-top:10px" id="schedTitle">Your schedule</h3><p class="muted" style="font-size:13px;margin:0" id="schedSub"></p></div><button class="xbtn" onclick="document.getElementById('schedModal').classList.remove('on')" aria-label="Close">&times;</button></div>
+  <div id="gantt"></div>
+</div></div>
+<div class="modal" id="modal"><div class="card">
+  <span class="sample">Concept only &middot; nothing is sent</span>
+  <h3 style="margin-top:12px">Your layout is ready to share</h3>
+  <p class="muted" style="font-size:14px">In the live site, this would send the layout and contact details to the Folia team, and email you a one-page summary.</p>
+  <ul id="mSum"></ul>
+  <button class="btn" onclick="document.getElementById('modal').classList.remove('on')">Close</button>
+</div></div>
+
+<script>
+/* ---------- isometric engine ---------- */
+const COS=Math.cos(Math.PI/6), SIN=.5;
+function mkP(sc,ox,oy){return (x,y,z)=>[ (x-y)*COS*sc+ox, (x+y)*SIN*sc - z*sc + oy ];}
+const pts=a=>a.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+const poly=(a,f,s,w=1,extra='')=>`<polygon points="${pts(a)}" fill="${f}" stroke="${s}" stroke-width="${w}" stroke-linejoin="round" ${extra}/>`;
+const line=(a,b,s,w)=>`<line x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/>`;
+const INK='#1F2522';
+
+/* returns layered svg strings for one building */
+function building(o){
+  const {L,W,stories,h,bay=2,glass=[],dx=0,dy=0,P0}=o;
+  const P=(x,y,z)=>P0(x+dx,y+dy,z);
+  const top=stories*h, out={};
+  const box=(x0,x1,y0,y1,z0,z1,cTop,cF,cS,s=INK,w=1.2)=>
+    poly([P(x0,y0,z1),P(x1,y0,z1),P(x1,y1,z1),P(x0,y1,z1)],cTop,s,w)+
+    poly([P(x0,y1,z0),P(x1,y1,z0),P(x1,y1,z1),P(x0,y1,z1)],cF,s,w)+
+    poly([P(x1,y0,z0),P(x1,y1,z0),P(x1,y1,z1),P(x1,y0,z1)],cS,s,w);
+  out.slab=box(-.5,L+.5,-.5,W+.5,-.45,0,'#D9D5C8','#C9C4B5','#BDB8A8');
+  // frame
+  let fb='',ff='';
+  const colsX=[];for(let x=0;x<=L+1e-6;x+=bay)colsX.push(x);
+  colsX.forEach(x=>{
+    fb+=line(P(x,0,0),P(x,0,top),'#4A6B80',2.4);
+    ff+=line(P(x,W,0),P(x,W,top),'#4A6B80',2.6);
+  });
+  [0,W].forEach(y=>{ if(y===0) fb+=line(P(0,y,0),P(0,y,top),'#4A6B80',2.4); });
+  fb+=line(P(L,0,0),P(L,0,top),'#4A6B80',2.4);
+  for(let k=1;k<=stories;k++){
+    const z=k*h;
+    fb+=line(P(0,0,z),P(L,0,z),'#3E5B6E',2.2)+line(P(0,0,z),P(0,W,z),'#3E5B6E',2.2);
+    ff+=line(P(0,W,z),P(L,W,z),'#3E5B6E',2.4)+line(P(L,0,z),P(L,W,z),'#3E5B6E',2.4);
+    // glulam joists
+    if(k===stories) for(let x=bay;x<L;x+=bay) fb+=line(P(x,0,z),P(x,W,z),'#B98B55',2);
+  }
+  // braces in end bays (front)
+  [[0,bay],[L-bay,L]].forEach(([a,b])=>{for(let k=0;k<stories;k++){ff+=line(P(a,W,k*h),P(b,W,(k+1)*h),'#4A6B80',1.8);}});
+  out.frameB=fb; out.frameF=ff;
+  // decks
+  let dk='';for(let k=1;k<stories;k++){const z=k*h;dk+=poly([P(0,0,z),P(L,0,z),P(L,W,z),P(0,W,z)],'rgba(217,213,200,.85)','#8E8A7E',1)+poly([P(0,W,z-.25),P(L,W,z-.25),P(L,W,z),P(0,W,z)],'#C9C4B5','#8E8A7E',.8);}
+  out.deck=dk;
+  // partitions
+  let pt='';for(let k=0;k<stories;k++){const z=k*h;for(let x=bay*2;x<L-.1;x+=bay*(k%2?2:3)){pt+=poly([P(x,.8,z),P(x,W-.8,z),P(x,W-.8,z+h-.3),P(x,.8,z+h-.3)],'rgba(160,188,121,.7)','#5A8836',1.2);}
+    pt+=poly([P(.3,W/2-.15,z),P(L-.3,W/2-.15,z),P(L-.3,W/2-.15,z+h-.3),P(.3,W/2-.15,z+h-.3)],'rgba(254,217,161,.6)','#C98A12',1);}
+  out.part=pt;
+  // panels and glass on y=W face and x=L face
+  let pn='',gl='';
+  const gpoly=(a,b,c,d)=>poly([a,b,c,d],'rgba(169,203,218,.78)','#4A6B80',1.2);
+  for(let k=0;k<stories;k++){
+    const z0=k*h+.12,z1=(k+1)*h-.12;
+    for(let i=0;i*bay<L-1e-6;i++){
+      const x0=i*bay+.08,x1=(i+1)*bay-.08;
+      const isG=glass.includes(i)||(o.glassAll);
+      if(o.clerestory){const zc=z0+(z1-z0)*.66;
+        pn+=poly([P(x0,W,z0),P(x1,W,z0),P(x1,W,zc),P(x0,W,zc)],'#E9EBEC','#7C8489',1);
+        gl+=gpoly(P(x0,W,zc),P(x1,W,zc),P(x1,W,z1),P(x0,W,z1));
+        if(isG)gl+=gpoly(P(x0+.25,W,z0),P(x1-.25,W,z0),P(x1-.25,W,zc-.3),P(x0+.25,W,zc-.3));
+      }else if(isG){
+        gl+=gpoly(P(x0,W,z0),P(x1,W,z0),P(x1,W,z1),P(x0,W,z1));
+        const xm=(x0+x1)/2, zm=z0+(z1-z0)*.62;
+        gl+=line(P(xm,W,z0),P(xm,W,z1),'#4A6B80',.9)+line(P(x0,W,zm),P(x1,W,zm),'#4A6B80',.9);
+      }else{
+        pn+=poly([P(x0,W,z0),P(x1,W,z0),P(x1,W,z1),P(x0,W,z1)],'#E9EBEC','#7C8489',1);
+        if(o.louver){for(let zz=z0+.5;zz<z1-.9;zz+=.35)pn+=line(P(x0+.15,W,zz),P(x1-.15,W,zz),'#AEB5BA',.9);
+          gl+=gpoly(P(x0+.2,W,z1-.8),P(x1-.2,W,z1-.8),P(x1-.2,W,z1-.2),P(x0+.2,W,z1-.2));}
+        else pn+=line(P(x0+.2,W,z1-.5),P(x1-.2,W,z1-.5),'#CDD2D5',1);
+      }
+    }
+    const n=Math.max(2,Math.round(W/2.5)),seg=W/n;
+    for(let j=0;j<n;j++){const y0=j*seg+.08,y1=(j+1)*seg-.08;
+      if(o.sideGlass){gl+=gpoly(P(L,y0,z0),P(L,y1,z0),P(L,y1,z1),P(L,y0,z1));}
+      else pn+=poly([P(L,y0,z0),P(L,y1,z0),P(L,y1,z1),P(L,y0,z1)],'#1E6A9C','#0E4469',1);}
+  }
+  // extras: canopy, balcony, stair, rooftop units
+  let ex='';
+  const slabXY=(x0,x1,y0,y1,z,t,c1,c2)=>poly([P(x0,y0,z+t),P(x1,y0,z+t),P(x1,y1,z+t),P(x0,y1,z+t)],c1,INK,1)+poly([P(x0,y1,z),P(x1,y1,z),P(x1,y1,z+t),P(x0,y1,z+t)],c2,INK,1)+poly([P(x1,y0,z),P(x1,y1,z),P(x1,y1,z+t),P(x1,y0,z+t)],c2,INK,1);
+  if(o.canopy){const d=2.2,z=h-.15;for(let x=bay;x<L;x+=bay*2)ex+=line(P(x,W+d-.2,0),P(x,W+d-.2,z),'#4E5A61',2.2);ex+=slabXY(-.2,L+.2,W,W+d,z,.25,'#B98B55','#8E6A3F');}
+  if(o.balcony){const d=2.4;for(let x=0;x<=L+1e-6;x+=bay*2)ex+=line(P(x,W+d-.2,0),P(x,W+d-.2,top+.3),'#4E5A61',2.2);
+    for(let k=1;k<stories;k++){const z=k*h;ex+=slabXY(0,L,W,W+d,z-.25,.25,'#D9D5C8','#BDB8A8');ex+=line(P(0,W+d,z+1.1),P(L,W+d,z+1.1),'#4E5A61',1.6);for(let x=.5;x<L;x+=.5)ex+=line(P(x,W+d,z),P(x,W+d,z+1.1),'#8C969C',.6);}
+    ex+=slabXY(-.2,L+.2,W,W+d+.2,top+.1,.28,'#B98B55','#8E6A3F');}
+  if(o.stair){const x0=L+.4,x1=L+2.2;for(let k=0;k<stories-1||k<1&&stories>1;k++){}const steps=10;let pts=[];
+    for(let i2=0;i2<=steps;i2++){const y=W-.4-(W-1.2)*i2/steps,z=h*i2/steps;ex+=poly([P(x0,y,z),P(x1,y,z),P(x1,y-(W-1.2)/steps,z),P(x0,y-(W-1.2)/steps,z)],'#D9D5C8','#6E6A5E',.6);}
+    ex+=line(P(x1,W-.4,1),P(x1,.8,h+1),'#4E5A61',1.6);}
+  if(o.rtu){[[L*.25,W*.3],[L*.6,W*.35]].forEach(([ux,uy])=>{const z=top+.38;ex+=slabXY(ux,ux+1.8,uy,uy+1.4,z,.9,'#C4C9CC','#9AA2A7');});}
+  out.extra=ex;
+  out.panel=pn; out.glass=gl;
+  out.roof=box(-.35,L+.35,-.35,W+.35,top,top+.38,'#5E6661','#454C48','#3C423E');
+  // pv
+  let pv='';const rz=top+.38;
+  for(let x=.6;x<L-1.2;x+=1.55){for(let y=.6;y<W-1;y+=1.25){pv+=poly([P(x,y,rz+.05),P(x+1.3,y,rz+.05),P(x+1.3,y+1,rz+.32),P(x,y+1,rz+.32)],'#22394A','#9FB6C4',.7);}}
+  if(o.pv===false)pv='';
+  out.pv=pv;
+  return out;
+}
+
+/* ---------- hero parts tray ---------- */
+const PARTS=[
+  ['Braced steel frames','×16',`<g stroke="#4A6B80" stroke-width="3" fill="none"><path d="M20 52 V8 H70 V52"/><path d="M20 52 L70 8 M20 8 L70 52" stroke-width="1.6"/></g>`],
+  ['Glulam beams','×28',`<g><rect x="6" y="18" width="88" height="9" fill="#D7A86E" stroke="#8A6236"/><rect x="6" y="33" width="88" height="9" fill="#D7A86E" stroke="#8A6236"/></g>`],
+  ['Wall panels','×44',`<g fill="#E7E2D4" stroke="#6E6A5E"><rect x="10" y="6" width="22" height="46"/><rect x="38" y="6" width="22" height="46"/><rect x="66" y="6" width="22" height="46"/></g>`],
+  ['Curtainwall units','×14',`<g fill="#A9CBDA" stroke="#4A6B80"><rect x="14" y="6" width="34" height="46"/><rect x="52" y="6" width="34" height="46"/><path d="M31 6 V52 M69 6 V52 M14 34 H86" stroke-width="1"/></g>`],
+  ['Roof panels','×18',`<g fill="#5E6661" stroke="#2F3532"><path d="M6 40 L40 18 L94 18 L60 40 Z"/><path d="M6 48 L40 26 L94 26 L60 48 Z" fill="#454C48"/></g>`],
+  ['Elevator','×1',`<g fill="none" stroke="#1F2522" stroke-width="2"><rect x="34" y="6" width="32" height="46"/><path d="M50 6V52M42 18l4-5 4 5M42 40l4 5 4-5"/></g>`],
+  ['Stairs','×2',`<g fill="none" stroke="#1F2522" stroke-width="2"><path d="M16 52 V44 H28 V36 H40 V28 H52 V20 H64 V12 H80"/></g>`]
+];
+document.getElementById('parts').innerHTML=PARTS.map(p=>`<div class="part"><svg viewBox="0 0 100 58">${p[2]}</svg><b>${p[0]}</b><span>${p[1]}</span></div>`).join('');
+
+/* ---------- exploded build ---------- */
+const STEPS=[
+  ['Foundation','on','Site work and foundations start while frames and panels are built in the shop.'],
+  ['Braced steel frame','off','Braced steel frames, 10 ft wide, built in Blach&rsquo;s shop and erected on site.'],
+  ['Floor deck','on','Metal deck on the steel frame, topped with concrete on site for quiet floors.'],
+  ['Glulam roof','off','Glulam roof beams and roof panels make the building weathertight early.'],
+  ['Wall panels','off','Steel-framed wall panels built in the shop close in the walls.'],
+  ['Curtainwall','off','Aluminum curtainwall and operable windows bring in daylight and fresh air.'],
+  ['Solar-ready','on','The metal roof is solar-ready. An estimated 70&ndash;90 kW of PV would make it Zero Net Energy.'],
+  ['Interiors','on','Interior walls aren&rsquo;t load-bearing, so rooms can change later.']
+];
+document.getElementById('stepper').innerHTML=STEPS.map((st,i)=>`<button data-i="${i}"><span class="trk"><i></i></span><span class="l"><em>0${i+1}</em>${st[0]}</span></button>`).join('');
+const isoP=mkP(34,340,250);
+const B=building({L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true,P0:isoP});
+const LAYERS=[['slab',0],['frameB',1],['deck',2],['part',7],['frameF',1],['panel',4],['glass',5],['roof',3],['extra',3],['pv',6]];
+const iso=document.getElementById('iso');
+iso.innerHTML=`<ellipse cx="360" cy="560" rx="420" ry="60" fill="#EEECE6"/>`+LAYERS.map(([k,s])=>`<g id="L_${k}" data-s="${s}">${B[k]}</g>`).join('')+
+  `<g id="callout" opacity="0"><line x1="760" y1="150" x2="690" y2="210" stroke="#0C6938" stroke-width="1.5"/><circle cx="690" cy="210" r="4" fill="#0C6938"/><text x="768" y="146" font-family="IBM Plex Mono" font-size="15" fill="#0C6938">70–90 kW PV</text></g>`;
+const ease=t=>1-Math.pow(1-t,3);
+const NST=STEPS.length;
+let prog=0, target=1, playing=false, playTimer=null, rafB=null;
+function renderBuild(f){
+  LAYERS.forEach(([k,s])=>{
+    const g=document.getElementById('L_'+k);
+    let t=Math.min(1,Math.max(0,(f-s)*1.6)); t=ease(t);
+    let op=t; const fade=Math.min(1,Math.max(0,(f-7)*1.6));
+    if(k==='panel'||k==='glass') op=t*(1-.82*fade);
+    if(k==='roof'||k==='pv') op=t*(1-.55*fade);
+    g.style.opacity=op; g.style.transform=`translateY(${(-(1-t)*160).toFixed(1)}px)`;
+  });
+  document.getElementById('callout').style.opacity=Math.min(1,Math.max(0,(f-6.2)*2))*(1-Math.min(1,Math.max(0,(f-7.4)*2)));
+  const cur=Math.max(0,Math.min(NST-1,Math.ceil(f-.001)-1));
+  document.querySelectorAll('#stepper button').forEach((b,i)=>{b.classList.toggle('on',i===cur);b.querySelector('i').style.width=(Math.min(1,Math.max(0,f-i))*100)+'%';});
+  const st=STEPS[cur];
+  document.getElementById('capN').textContent='0'+(cur+1);
+  document.getElementById('capT').textContent=st[0].replace('&ndash;','–');
+  const tg=document.getElementById('capTag');tg.className='tag '+st[1];tg.textContent=st[1]==='off'?'Made off-site':'On site';
+  document.getElementById('capD').innerHTML=st[2];
+  document.getElementById('finalPhoto').classList.toggle('on',f>7.35);
+}
+function tick(){const d=target-prog;if(Math.abs(d)<.002){prog=target;renderBuild(prog);rafB=null;return;}prog+=d*.09;renderBuild(prog);rafB=requestAnimationFrame(tick);}
+function goTo(t){target=Math.max(0,Math.min(NST,t));if(!rafB)rafB=requestAnimationFrame(tick);}
+function setPlayIcon(){document.getElementById('playIco').innerHTML=playing?'<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>':(target>=NST?'<path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/>':'<path d="M8 5v14l11-7z"/>');}
+function play(){if(target>=NST){prog=0;target=0;renderBuild(0);}playing=true;setPlayIcon();step();}
+function step(){clearTimeout(playTimer);if(!playing)return;if(target>=NST){playing=false;setPlayIcon();return;}goTo(Math.floor(target)+1);playTimer=setTimeout(step,1500);}
+function pause(){playing=false;clearTimeout(playTimer);setPlayIcon();}
+document.getElementById('play').addEventListener('click',()=>playing?pause():play());
+document.getElementById('bNext').addEventListener('click',()=>{pause();goTo(Math.min(NST,Math.ceil(target-.001)+1));setPlayIcon();});
+document.getElementById('bPrev').addEventListener('click',()=>{pause();goTo(Math.max(1,Math.ceil(target-.001)-1));setPlayIcon();});
+document.addEventListener('keydown',e=>{const r=document.querySelector('#build .stage').getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){if(e.key==='ArrowRight')document.getElementById('bNext').click();if(e.key==='ArrowLeft')document.getElementById('bPrev').click();}});
+document.getElementById('stepper').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;pause();goTo(+b.dataset.i+1);setPlayIcon();});
+const forced=new URLSearchParams(location.search).get('explode');
+if(forced!==null){prog=target=(+forced)*NST;}
+renderBuild(prog);setPlayIcon();
+if(forced===null&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const bo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){prog=0;target=0;renderBuild(0);setTimeout(play,350);bo.disconnect();}}),{threshold:.45});
+  bo.observe(document.querySelector('#build .stage'));
+}
+
+/* ---------- same kit ---------- */
+const TYPES=[
+  {img:'Folia-One-Story-scaled-1.jpg',k:'One story',sf:'3,830 – 5,150',pub:true,o:{L:12,W:6,stories:1,h:3.9,glass:[1,2,3,4],canopy:true},sc:42,txt:'Single-level classroom buildings in two published sizes.',c:[10,16,8,10,0]},
+  {img:'Folia-Two-Story-scaled-1.jpg',k:'Two story',sf:'15,100',pub:true,Lshape:true,o:{L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true},sc:28,txt:'The DSA Pre-Check approved L-shaped plan: 12 classrooms off an exterior balcony, with stairs and an elevator.',c:[16,44,14,18,2]},
+  {img:'Folia-MPR-scaled-1.jpg',k:'Multipurpose',sf:'6,000',pub:false,o:{L:10,W:8,stories:1,h:6,glass:[0,1,3,4],clerestory:true,sideGlass:true,pv:false},sc:40,txt:'A tall, open room for assemblies, dining and events.',c:[12,18,10,16,0]},
+  {img:'Folia-Gym-scaled-1.jpg',k:'Gym',sf:'9,500',pub:false,o:{L:14,W:10,stories:1,h:7.5,bay:3.5,glass:[1],clerestory:true,pv:false},sc:31,txt:'Long-span frames with clerestory daylight.',c:[16,26,6,24,0]},
+  {img:'Folia-Science-Technology-scaled-1.jpg',k:'Science',sf:'5,400',pub:false,o:{L:12,W:7,stories:1,h:4.3,glass:[0,4],louver:true,rtu:true},sc:42,txt:'Lab-ready classrooms with service zones built into the frame.',c:[14,20,8,14,0]},
+  {img:'Folia-Complete-Campus.jpg',k:'Campus',sf:'Mix and match',pub:false,campus:true,sc:20,txt:'Phase a whole campus with the same system, one building at a time.',c:[74,144,46,82,2]}
+];
+const tabs=document.getElementById('tabs');
+tabs.innerHTML=TYPES.map((t,i)=>`<button class="tab${i===1?' on':''}" data-i="${i}">${t.k}</button>`).join('');
+function drawBldRot(o,P0){const dx=o.dx||0,dy=o.dy||0;return drawBld({...o,dx:0,dy:0},(x,y,z)=>P0(y+dx,x+dy,z));}
+function drawBld(o,P0){const b=building({...o,P0});return ['slab','frameB','deck','frameF','panel','glass','roof','pv','extra'].map(k=>b[k]||'').join('');}
+function renderKit(i){
+  const t=TYPES[i]; let svg=`<ellipse cx="420" cy="${t.campus?470:500}" rx="470" ry="70" fill="#ECE8DD"/>`;
+  if(t.campus){
+    const P0=mkP(17,400,140);
+    const list=[{L:10,W:8,stories:1,h:6,glass:[0,1,3,4],clerestory:true,sideGlass:true,pv:false,dx:0,dy:0},{L:14,W:10,stories:1,h:7.5,bay:3.5,glass:[1],clerestory:true,pv:false,dx:16,dy:0},{L:12,W:6,stories:1,h:3.9,glass:[1,2,3,4],canopy:true,dx:0,dy:12},{L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true,dx:16,dy:14},{L:12,W:7,stories:1,h:4.3,glass:[0,4],louver:true,rtu:true,dx:-2,dy:23}];
+    list.sort((a,b)=>(a.dx+a.dy)-(b.dx+b.dy)).forEach(o=>svg+=drawBld(o,P0));
+  } else if(t.Lshape){
+    const o=t.o, sc=t.sc, cx=7, cy=7, P0=mkP(sc,420-(cx-cy)*COS*sc,250-((cx+cy)*SIN-o.stories*o.h/2)*sc);
+    svg+=drawBld({...o,dx:0,dy:0},P0)+drawBldRot({...o,L:8,glass:[1,2],dx:8,dy:6},P0);
+  } else {
+    const o=t.o, P0=mkP(t.sc, 420 - (o.L-o.W)*COS*t.sc/2, 250 - ((o.L+o.W)*SIN - o.stories*o.h)*t.sc/2 );
+    svg+=drawBld(o,P0);
+  }
+  const s=document.getElementById('kitIso'); s.innerHTML=`<g class="fade">${svg}</g>`;
+  const names=['Braced frames','Wall panels','Curtainwall units','Roof panels','Stairs'];
+  document.getElementById('kitInfo').innerHTML=`<div class="fade"><figure class="kit-photo"><img src="assets/${t.img}" alt="Folia ${t.k} rendering"><figcaption>Rendering</figcaption></figure><div class="mono muted">Building type</div><h3>${t.k}</h3><p class="muted" style="margin:0">${t.txt}</p>
+  <div class="sf">${t.sf}${/\d/.test(t.sf)?' <span style="font-size:18px;font-weight:500">sf</span>':''}</div>${t.pub?'<span class="pub">Published Folia plan</span>':'<span class="sample">Sample size</span>'}
+  <div class="counts">${names.map((n,j)=>`<div><span>${n}</span><b>${t.c[j]||'–'}</b></div>`).join('')}<div style="border:0"><span class="muted" style="font-size:12px">Part counts are sample figures</span></div></div></div>`;
+}
+tabs.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;tabs.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderKit(+b.dataset.i);});
+renderKit(+(new URLSearchParams(location.search).get('type')||1));
+
+/* ---------- floor plan ---------- */
+const PRE=[
+  {k:'Classrooms',d:'Eight standard classrooms off a central corridor',N:[[3,'Classroom','960'],[3,'Classroom','960'],[3,'Classroom','960'],[3,'Classroom','960']],S:[[3,'Classroom','960'],[3,'Classroom','960'],[3,'Classroom','960'],[3,'Classroom','960']]},
+  {k:'Suites + flex',d:'Paired classrooms and project space for small groups',N:[[6,'Suite','1,920'],[3,'Classroom','960'],[3,'Classroom','960']],S:[[4,'Large classroom','1,230'],[4,'Large classroom','1,230'],[4,'Flex / project','1,230']]},
+  {k:'Learning commons',d:'Years later: a library, maker lab and café in the same shell',N:[[6,'Learning commons','1,920'],[6,'Maker lab','1,920']],S:[[3,'Classroom','960'],[3,'Classroom','960'],[6,'Café','1,920']]}
+];
+const FILL={'Classroom':'#A0BC79','Large classroom':'#C8E9EC','Suite':'#C4D5AB','Flex / project':'#8B9DBF','Learning commons':'#C4D5AB','Maker lab':'#C8E9EC','Café':'#FED9A1'};
+const plan=document.getElementById('plan'); const X0=20,UNIT=60,RH=125;
+function planSVG(){let s=`<rect x="10" y="10" width="740" height="310" fill="#fff" stroke="#1F2522" stroke-width="3"/><rect x="${X0}" y="${20+RH}" width="720" height="40" fill="#FED9A1"/><text x="380" y="${20+RH+25}" text-anchor="middle" font-size="12" fill="#8B918C" font-family="IBM Plex Mono">CORRIDOR</text>`;
+  for(let r=0;r<2;r++)for(let i=0;i<4;i++){s+=`<rect class="room" id="R${r}${i}" x="${X0}" y="${r?20+RH+40:20}" width="0" height="${RH}" fill="#F4F1E8"/><text id="T${r}${i}" x="${X0}" y="${(r?20+RH+40:20)+RH/2-4}" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2522"></text><text id="A${r}${i}" x="${X0}" y="${(r?20+RH+40:20)+RH/2+16}" text-anchor="middle" font-size="12" fill="#6B716C" font-family="IBM Plex Mono"></text>`;}
+  plan.innerHTML=s;}
+planSVG();
+function setPreset(i){
+  document.querySelectorAll('.preset').forEach((b,j)=>b.classList.toggle('on',j===i));
+  [PRE[i].N,PRE[i].S].forEach((row,r)=>{let x=X0;for(let j=0;j<4;j++){const rm=row[j],R=document.getElementById(`R${r}${j}`),T=document.getElementById(`T${r}${j}`),A=document.getElementById(`A${r}${j}`);
+    if(rm){const w=rm[0]*UNIT;R.style.x=x+'px';R.style.width=w+'px';R.setAttribute('x',x);R.setAttribute('width',w);R.style.fill=FILL[rm[1]];
+      const cx=x+w/2;T.setAttribute('x',cx);A.setAttribute('x',cx);T.textContent=rm[1];A.textContent=rm[2]+' sf';T.style.opacity=1;A.style.opacity=1;x+=w;}
+    else{R.style.x=(X0+720)+'px';R.style.width='0px';R.setAttribute('x',X0+720);R.setAttribute('width',0);T.style.opacity=0;A.style.opacity=0;}}});
+}
+document.getElementById('presets').innerHTML=PRE.map((p,i)=>`<button class="preset" data-i="${i}"><b>${p.k}</b><span>${p.d}</span></button>`).join('');
+document.getElementById('presets').addEventListener('click',e=>{const b=e.target.closest('.preset');if(b)setPreset(+b.dataset.i);});
+setPreset(0);
+document.getElementById('ptabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#ptabs button').forEach(x=>x.classList.toggle('on',x===b));const d=b.dataset.v==='diag';document.getElementById('diagWrap').style.display=d?'':'none';document.getElementById('pubWrap').style.display=d?'none':'';if(!d)document.getElementById('pubImg').src='assets/'+b.dataset.v;});
+
+/* ---------- calendars ---------- */
+const calObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.seg').forEach((s,i)=>setTimeout(()=>s.style.width=s.dataset.w+'%',i*180));calObs.disconnect();}}),{threshold:.4});
+calObs.observe(document.getElementById('cal'));
+
+/* ---------- configurator ---------- */
+const ROOMS=[
+  {k:'Classroom',sf:960,bays:3,c:'#A0BC79'},
+  {k:'Large classroom',sf:1230,bays:4,c:'#C4D5AB'},
+  {k:'Science lab',sf:1260,bays:4,c:'#C8E9EC'},
+  {k:'Suite',sf:1920,bays:6,c:'#7FA85A'},
+  {k:'Flex room',sf:300,bays:1,c:'#8B9DBF'}
+];
+let layout=[], stories=2, shape='bar';
+document.getElementById('tiles').innerHTML=ROOMS.map((r,i)=>`<button class="tile" draggable="true" data-i="${i}"><span style="color:#EEF0EC;font-family:var(--sans);font-size:14px"><i style="background:${r.c}"></i>${r.k}</span><span>${r.sf.toLocaleString()} sf</span></button>`).join('');
+const strip=document.getElementById('strip');
+const fmtM=n=>'$'+(n/1e6).toFixed(1)+'M';
+function addMonths(ym,m){const [y0,mo0]=ym.split('-').map(Number);let d=new Date(y0,mo0-1+Math.round(m),1);while(d.getMonth()!==0&&d.getMonth()!==7)d=new Date(d.getFullYear(),d.getMonth()+1,1);return (d.getMonth()===7?'Aug ':'Jan ')+d.getFullYear()+(d.getMonth()===7?' (fall term)':' (spring term)');}
+function addMonthsRaw(ym,m){const [y,mo]=ym.split('-').map(Number);const d=new Date(y,mo-1+Math.round(m),1);return d.toLocaleString('en-US',{month:'short',year:'numeric'});}
+function renderCfg(){
+  strip.innerHTML=layout.map((i,j)=>{const r=ROOMS[i];return `<div class="chip" style="background:${r.c};flex-basis:${r.bays*28}px">${r.k}<button data-j="${j}" aria-label="Remove">×</button></div>`;}).join('');
+  const roomSf=layout.reduce((a,i)=>a+ROOMS[i].sf,0), gross=Math.round(roomSf*1.25/10)*10;
+  document.getElementById('roomCount').textContent=layout.length+' rooms';
+  document.getElementById('oSf').textContent=gross.toLocaleString()+' sf';
+  const start=document.getElementById('start').value||'2027-03';
+  const folia=gross?Math.round(14+gross/1500):0, conv=folia+12;
+  document.getElementById('oDate').textContent=gross?addMonths(start,folia):'–';
+  document.getElementById('oConv').textContent=gross?`Conventional build: about ${addMonths(start,conv)}`:'';
+  const badge=document.getElementById('badge');
+  if(stories===2&&shape==='L'&&gross>=14000&&gross<=16000){badge.className='badge ok';badge.innerHTML='<i>✓</i><span>Matches the DSA Pre-Check two-story plan, the fastest approval path.</span>';}
+  else{badge.className='badge note';badge.innerHTML='<span>Tip: two stories, L-shape and about 15,100 sf matches the DSA Pre-Check plan.</span>';}
+  // 3D massing (rotatable)
+  const totalBays=layout.reduce((a,i)=>a+ROOMS[i].bays,0);
+  const even=v=>Math.max(4,Math.round(v/2)*2);
+  const Ltot=Math.max(6,Math.ceil(totalBays/stories/2)*2), W=6;
+  let rects=[], court=null, walk=null;   // rects: {x0,x1,y0,y1,long:'x'|'y'}
+  if(shape==='bar'){rects=[{x0:0,x1:Ltot,y0:0,y1:W,long:'x'}];}
+  else if(shape==='L'){const La=even(Math.max(Ltot*.6,2.5*W)),leg=even(Math.max(2*W,Ltot-La+W));rects=[{x0:0,x1:La,y0:0,y1:W,long:'x'},{x0:La-W,x1:La,y0:W,y1:W+leg,long:'y'}];court=[0,La-W,W,W+leg*.8];}
+  else if(shape==='U'){const La=even(Math.max(Ltot*.55,3.5*W)),leg=even(Math.max(2*W,(Ltot-La)/2+W));rects=[{x0:0,x1:La,y0:0,y1:W,long:'x'},{x0:0,x1:W,y0:W,y1:W+leg,long:'y'},{x0:La-W,x1:La,y0:W,y1:W+leg,long:'y'}];court=[W,La-W,W,W+leg];}
+  else {const La=even(Math.max(Ltot/2,2.5*W)),gap=9;rects=[{x0:0,x1:La,y0:0,y1:W,long:'x'},{x0:4,x1:4+La,y0:W+gap,y1:2*W+gap,long:'x'}];court=[0,La+4,W,W+gap];walk=[La/2+1,La/2+3,W,W+gap];}
+  // assign rooms (in layout order) to wings and floors, single-loaded along each wing
+  const asg=rects.map(()=>[]);let q=0;
+  for(let k=0;k<stories;k++)rects.forEach((r,wi)=>{const cap=r.long==='x'?r.x1-r.x0:r.y1-r.y0;let u=0;const list=[];
+    while(q<layout.length){const b=ROOMS[layout[q]].bays;if(u+b>cap+.01&&list.length)break;list.push({ri:layout[q],idx:q,u0:u,u1:Math.min(cap,u+b)});u+=b;q++;}asg[wi][k]=list;});
+  while(q<layout.length){const wi=rects.length-1,k=stories-1,l=asg[wi][k];const last=l.length?l[l.length-1].u1:0;l.push({ri:layout[q],idx:q,u0:last,u1:last+ROOMS[layout[q]].bays});q++;}
+  CFG={rects,court,walk,stories,h:3.7,empty:!layout.length,asg,gross,folia,conv,start,pre:(stories===2&&shape==='L'&&gross>=14000&&gross<=16000)};
+  drawPlan();
+  drawCfg3D();
+}
+let CFG=null, yaw=0, planFloor=0, selIdx=null;
+const SHORT={'Classroom':'Classroom','Large classroom':'Large','Science lab':'Lab','Suite':'Suite','Flex room':'Flex'};
+function drawPlan(){
+  const el=document.getElementById('cfgPlan');const ft=document.getElementById('ftabs');
+  if(!CFG||CFG.empty){el.innerHTML='';ft.innerHTML='';return;}
+  if(planFloor>=CFG.stories)planFloor=0;
+  ft.innerHTML=[...Array(CFG.stories).keys()].map(k=>`<button data-f="${k}" class="${k===planFloor?'on':''}">Floor ${k+1}</button>`).join('');
+  let ex=0,ey=0;CFG.rects.forEach(r=>{ex=Math.max(ex,r.x1);ey=Math.max(ey,r.y1);});
+  const H=Math.round(Math.max(170,Math.min(360,860*ey/ex+30)));el.setAttribute('viewBox',`0 0 860 ${H}`);
+  const sc=Math.min(840/ex,(H-26)/ey),ox=(860-ex*sc)/2,oy=(H-20-ey*sc)/2,X=v=>ox+v*sc,Y=v=>oy+v*sc,bal=1.3;
+  let o='';
+  CFG.rects.forEach((r,wi)=>{
+    o+=`<rect x="${X(r.x0)}" y="${Y(r.y0)}" width="${(r.x1-r.x0)*sc}" height="${(r.y1-r.y0)*sc}" fill="#16301F" stroke="#3E6A4B"/>`;
+    // balcony band on + side
+    if(r.long==='x')o+=`<rect x="${X(r.x0)}" y="${Y(r.y1-bal)}" width="${(r.x1-r.x0)*sc}" height="${bal*sc}" fill="#FED9A1" opacity=".35"/>`;
+    else o+=`<rect x="${X(r.x1-bal)}" y="${Y(r.y0)}" width="${bal*sc}" height="${(r.y1-r.y0)*sc}" fill="#FED9A1" opacity=".35"/>`;
+    (CFG.asg[wi][planFloor]||[]).forEach(sg=>{const R=ROOMS[sg.ri];let x,y,w,hh;
+      if(r.long==='x'){x=X(r.x0+sg.u0);y=Y(r.y0);w=(sg.u1-sg.u0)*sc;hh=(r.y1-r.y0-bal)*sc;}else{x=X(r.x0);y=Y(r.y0+sg.u0);w=(r.x1-r.x0-bal)*sc;hh=(sg.u1-sg.u0)*sc;}
+      const sel=sg.idx===selIdx;const lab=w>62||hh>62?R.k:SHORT[R.k];
+      o+=`<g class="rm" data-idx="${sg.idx}"><rect x="${x+1}" y="${y+1}" width="${w-2}" height="${hh-2}" fill="${R.c}" stroke="${sel?'#FFD166':'#16301F'}" stroke-width="${sel?4:1.5}"/>`+
+        `<text x="${x+w/2}" y="${y+hh/2+4}" text-anchor="middle" font-family="Montserrat" font-size="${Math.min(15,Math.max(10,Math.min(w,hh*2.2)/7))}" font-weight="600" fill="#222">${lab}</text></g>`;});
+  });
+  o+=`<text x="8" y="${H-6}" font-family="IBM Plex Mono" font-size="12" fill="#7F9A84">Light band: exterior balcony</text>`;
+  el.innerHTML=o;
+}
+document.getElementById('cfgPlan').addEventListener('click',e=>{const g=e.target.closest('.rm');if(!g)return;const i=+g.dataset.idx;
+  if(selIdx===null){selIdx=i;drawPlan();return;}
+  if(selIdx!==i){[layout[selIdx],layout[i]]=[layout[i],layout[selIdx]];}selIdx=null;renderCfg();});
+document.getElementById('ftabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;planFloor=+b.dataset.f;drawPlan();});
+function monthLabel(ym,m){const [y,mo]=ym.split('-').map(Number);const d=new Date(y,mo-1+m,1);return d.toLocaleString('en-US',{month:'short',year:'2-digit'});}
+document.getElementById('schedBtn').addEventListener('click',()=>{
+  if(!CFG||CFG.empty)return;const M=CFG.folia,C=CFG.conv,st=CFG.start,pre=CFG.pre;
+  const d=Math.round(M*.22),dsa=Math.max(2,Math.round(M*(pre?.13:.2))),fab=Math.round(M*.3),clo=1,asm=Math.max(2,M-d-dsa-fab-clo);
+  const rows=[['Design',0,d,'#A0BC79'],[pre?'DSA review (Pre-Check)':'DSA review',d,dsa,'#60A845'],['Factory: frames + panels',d+dsa,fab,'#0C6938'],['Site work + foundations',d+dsa,fab,'#125788'],['Assembly + interiors',d+dsa+fab,asm,'#0A4F2A'],['DSA closeout',d+dsa+fab+asm,clo,'#06331B']];
+  const T=C+2,pc=v=>(v/T*100)+'%';
+  let h=`<div class="g-axis2"><div></div><div class="t">`+[...Array(Math.floor(T/6)+1).keys()].map(i=>`<span style="left:${pc(i*6)}">${monthLabel(st,i*6)}</span>`).join('')+`</div></div>`;
+  rows.forEach(r=>{h+=`<div class="g-row2"><div>${r[0]}</div><div class="tr" style="--m:${100/T}%"><div class="b" style="left:${pc(r[1])};width:${pc(r[2])};background:${r[3]}"></div></div></div>`;});
+  h+=`<div class="g-row2"><div><b>Students move in</b></div><div class="tr" style="--m:${100/T}%"><div class="ms" style="left:${pc(M)}"></div></div></div>`;
+  h+=`<div class="g-row2 conv"><div>Conventional build</div><div class="tr" style="--m:${100/T}%"><div class="b" style="left:0;width:${pc(C)};background:#B5B9B6"></div></div></div>`;
+  document.getElementById('gantt').innerHTML=h;
+  document.getElementById('schedTitle').textContent=`About ${M} months to move-in`;
+  document.getElementById('schedSub').textContent=`${document.getElementById('oSf').textContent} · ${pre?'Pre-Check plan':'custom layout'} · conventional build about ${C} months. Durations are illustrative until Blach confirms.`;
+  document.getElementById('schedModal').classList.add('on');
+});
+function drawCfg3D(){
+  const svgEl=document.getElementById('cfgIso');
+  if(!CFG||CFG.empty){svgEl.innerHTML=`<text x="420" y="300" text-anchor="middle" fill="#7F8A82" font-size="22" font-family="Montserrat">Your building appears here</text>`;return;}
+  const {rects,court,walk,stories,h}=CFG, top=stories*h;
+  let ex=0,ey=0;rects.forEach(r=>{ex=Math.max(ex,r.x1);ey=Math.max(ey,r.y1);});
+  const PX=Math.max(40,ex+8),PY=Math.max(30,ey+8),cx=ex/2,cy=ey/2,px0=cx-PX/2,py0=cy-PY/2;
+  const R=Math.hypot(PX,PY)/2, c=Math.cos(yaw), sn=Math.sin(yaw);
+  const sc=Math.min(40,880/(2*R*COS*1.02),560/(2*R*SIN*1.02+top+1));
+  const rot=(x,y)=>[cx+(x-cx)*c-(y-cy)*sn, cy+(x-cx)*sn+(y-cy)*c];
+  const ox=420-(0)*sc, oy=300+top*sc*.35;
+  const P=(x,y,z)=>{const [a,b]=rot(x,y);const u=a-cx,v=b-cy;return [(u-v)*COS*sc+ox,(u+v)*SIN*sc-z*sc+oy];};
+  const depth=(x,y)=>{const [a,b]=rot(x,y);return a+b;};
+  const vis=(nx,ny)=>{const rx=nx*c-ny*sn, ry=nx*sn+ny*c;return rx+ry>0.0001;};
+  let out=poly([P(px0,py0,0),P(px0+PX,py0,0),P(px0+PX,py0+PY,0),P(px0,py0+PY,0)],'#1D4630','#2E5E40',1.2);
+  for(let gx=Math.ceil(px0/4)*4;gx<px0+PX;gx+=4)out+=line(P(gx,py0,0),P(gx,py0+PY,0),'rgba(160,188,121,.16)',1);
+  for(let gy=Math.ceil(py0/4)*4;gy<py0+PY;gy+=4)out+=line(P(px0,gy,0),P(px0+PX,gy,0),'rgba(160,188,121,.16)',1);
+  const items=[];
+  if(court){const [x0,x1,y0,y1]=court;let g=poly([P(x0+.3,y0+.3,0),P(x1-.3,y0+.3,0),P(x1-.3,y1-.3,0),P(x0+.3,y1-.3,0)],'#3C5A41','#5C7F60',1);
+    out+=g; for(let k=0;k<5;k++){const tx=x0+1+(x1-x0-2)*((k*37)%100)/100,ty=y0+1+(y1-y0-2)*((k*61)%100)/100;items.push({d:depth(tx,ty)-.5,svg:(()=>{const q=P(tx,ty,0);return line(q,P(tx,ty,1.2),'#5B4630',2)+`<ellipse cx="${q[0].toFixed(1)}" cy="${(q[1]-sc*1.5).toFixed(1)}" rx="${(sc*.8).toFixed(1)}" ry="${(sc*.65).toFixed(1)}" fill="#6E9A5E" stroke="#3F6B3F"/>`;})()});}}
+  if(walk){const [x0,x1,y0,y1]=walk,z=3.2;let g='';for(let y=y0+1.5;y<y1;y+=3){g+=line(P(x0+.2,y,0),P(x0+.2,y,z),'#4A6B80',2)+line(P(x1-.2,y,0),P(x1-.2,y,z),'#4A6B80',2);}
+    g+=poly([P(x0,y0,z),P(x1,y0,z),P(x1,y1,z),P(x0,y1,z)],'#5E6661','#2F3532',1);items.push({d:depth((x0+x1)/2,(y0+y1)/2),svg:g});}
+  rects.forEach(r=>{
+    let g='';
+    // slab
+    const sx0=r.x0-.5,sx1=r.x1+.5,sy0=r.y0-.5,sy1=r.y1+.5;
+    g+=sides(sx0,sx1,sy0,sy1,-.45,0,'#C9C4B5','#BDB8A8')+poly([P(sx0,sy0,0),P(sx1,sy0,0),P(sx1,sy1,0),P(sx0,sy1,0)],'#D9D5C8',INK,1);
+    // walls
+    const walls=[{a:[r.x0,r.y0],b:[r.x1,r.y0],n:[0,-1]},{a:[r.x1,r.y0],b:[r.x1,r.y1],n:[1,0]},{a:[r.x1,r.y1],b:[r.x0,r.y1],n:[0,1]},{a:[r.x0,r.y1],b:[r.x0,r.y0],n:[-1,0]}]
+      .filter(w=>vis(w.n[0],w.n[1])).sort((p,q)=>depth((p.a[0]+p.b[0])/2,(p.a[1]+p.b[1])/2)-depth((q.a[0]+q.b[0])/2,(q.a[1]+q.b[1])/2));
+    const wi=rects.indexOf(r);
+    walls.forEach(w=>{
+      const len=Math.hypot(w.b[0]-w.a[0],w.b[1]-w.a[1]);const longWall=(r.long==='x'&&w.n[1]!==0)||(r.long==='y'&&w.n[0]!==0);
+      if(longWall&&CFG.asg){const cap=r.long==='x'?r.x1-r.x0:r.y1-r.y0;
+        const pt=u=>r.long==='x'?[r.x0+u,w.n[1]>0?r.y1:r.y0]:[w.n[0]>0?r.x1:r.x0,r.y0+u];
+        for(let k=0;k<stories;k++){const z0=k*h+.12,z1=(k+1)*h-.12;const segs=(CFG.asg[wi]&&CFG.asg[wi][k])||[];let used=0;
+          const panel=(u0,u1,kind,j,n)=>{const A=pt(u0+.03),Bp=pt(u1-.03);const Q=(p,z)=>P(p[0],p[1],z);const pts=[Q(A,z0),Q(Bp,z0),Q(Bp,z1),Q(A,z1)];
+            const G=()=>poly(pts,'rgba(200,233,236,.92)','#4A6B80',1.1), S=()=>poly(pts,'#E9EBEC','#7C8489',1);
+            if(kind==='Suite'){g+=G();const zm=z0+(z1-z0)*.7;g+=line(Q(A,zm),Q(Bp,zm),'#4A6B80',.8);}
+            else if(kind==='Classroom'){g+=(j<n-1)?G():S();}
+            else if(kind==='Large classroom'){g+=(j<n-1)?G():S();if(j<n-1){const zm=z0+(z1-z0)*.62;g+=line(Q(A,zm),Q(Bp,zm),'#4A6B80',.8);}}
+            else if(kind==='Science lab'){g+=S();for(let zz=z0+.4;zz<z1-.9;zz+=.33)g+=line(Q(A,zz),Q(Bp,zz),'#AEB5BA',.8);g+=poly([Q(A,z1-.75),Q(Bp,z1-.75),Q(Bp,z1-.15),Q(A,z1-.15)],'rgba(200,233,236,.92)','#4A6B80',.8);}
+            else if(kind==='Flex room'){g+=poly(pts,'#1E6A9C','#0E4469',1);}
+            else g+=S();};
+          segs.forEach(sg=>{const kind=ROOMS[sg.ri].k;const n=Math.max(1,Math.round(sg.u1-sg.u0));for(let j=0;j<n;j++){const a=sg.u0+(sg.u1-sg.u0)*j/n,b=sg.u0+(sg.u1-sg.u0)*(j+1)/n;panel(a,b,kind,j,n);}
+            g+=line(P(...pt(sg.u1),z0-.1),P(...pt(sg.u1),z1+.1),'#3E5B6E',1.4);used=Math.max(used,sg.u1);});
+          for(let u=used;u<cap-.05;u+=1)panel(u,Math.min(cap,u+1),'solid',0,1);
+          g+=line(P(...pt(0),(k+1)*h),P(...pt(cap),(k+1)*h),'#3E5B6E',1.6);}
+        return;}
+      const n=longWall?Math.round(len/2):Math.max(2,Math.round(len/2.5));
+      for(let k=0;k<stories;k++){const z0=k*h+.12,z1=(k+1)*h-.12;
+        for(let i=0;i<n;i++){const t0=i/n+.006,t1=(i+1)/n-.006;
+          const A=[w.a[0]+(w.b[0]-w.a[0])*t0,w.a[1]+(w.b[1]-w.a[1])*t0],B=[w.a[0]+(w.b[0]-w.a[0])*t1,w.a[1]+(w.b[1]-w.a[1])*t1];
+          const pts=[P(A[0],A[1],z0),P(B[0],B[1],z0),P(B[0],B[1],z1),P(A[0],A[1],z1)];
+          if(!longWall) g+=poly(pts,'#1E6A9C','#0E4469',1);
+          else if(i%3!==0){g+=poly(pts,'rgba(200,233,236,.92)','#4A6B80',1.1);const M=[(A[0]+B[0])/2,(A[1]+B[1])/2];g+=line(P(M[0],M[1],z0),P(M[0],M[1],z1),'#4A6B80',.8);}
+          else g+=poly(pts,'#E9EBEC','#7C8489',1);
+        }
+        g+=line(P(w.a[0],w.a[1],(k+1)*h),P(w.b[0],w.b[1],(k+1)*h),'#3E5B6E',1.6);
+      }
+    });
+    // roof
+    const rx0=r.x0-.35,rx1=r.x1+.35,ry0=r.y0-.35,ry1=r.y1+.35;
+    g+=sides(rx0,rx1,ry0,ry1,top,top+.38,'#454C48','#3C423E')+poly([P(rx0,ry0,top+.38),P(rx1,ry0,top+.38),P(rx1,ry1,top+.38),P(rx0,ry1,top+.38)],'#5E6661',INK,1.2);
+    const lx=r.x1-r.x0, ly=r.y1-r.y0, alongX=lx>=ly;
+    for(let a=.6;a<(alongX?lx:ly)-1.2;a+=1.55){for(let b=.6;b<(alongX?ly:lx)-1;b+=1.25){
+      const q=(u,v)=>alongX?[r.x0+u,r.y0+v]:[r.x0+v,r.y0+u];const z=top+.42;
+      const c1=q(a,b),c2=q(a+1.3,b),c3=q(a+1.3,b+1),c4=q(a,b+1);g+=poly([P(c1[0],c1[1],z),P(c2[0],c2[1],z),P(c3[0],c3[1],z),P(c4[0],c4[1],z)],'#22394A','#9FB6C4',.6);}}
+    items.push({d:depth((r.x0+r.x1)/2,(r.y0+r.y1)/2),svg:g});
+  });
+  function sides(x0,x1,y0,y1,z0,z1,c1,c2){let s='';[{a:[x0,y0],b:[x1,y0],n:[0,-1]},{a:[x1,y0],b:[x1,y1],n:[1,0]},{a:[x1,y1],b:[x0,y1],n:[0,1]},{a:[x0,y1],b:[x0,y0],n:[-1,0]}].forEach((w,i)=>{if(vis(w.n[0],w.n[1]))s+=poly([P(w.a[0],w.a[1],z0),P(w.b[0],w.b[1],z0),P(w.b[0],w.b[1],z1),P(w.a[0],w.a[1],z1)],i%2?c1:c2,INK,1);});return s;}
+  items.sort((p,q)=>p.d-q.d).forEach(it=>out+=it.svg);
+  svgEl.innerHTML=out;
+}
+function std(){layout=[0,0,0,0,0,0,0,0,0,0,1,1];stories=2;shape='L';document.querySelectorAll('#shapes button').forEach(b=>b.classList.toggle('on',b.dataset.sh==='L'));document.querySelectorAll('#stories button').forEach(b=>b.classList.toggle('on',b.dataset.s==='2'));renderCfg();}
+document.getElementById('tiles').addEventListener('click',e=>{const t=e.target.closest('.tile');if(!t)return;layout.push(+t.dataset.i);renderCfg();});
+document.getElementById('tiles').addEventListener('dragstart',e=>{const t=e.target.closest('.tile');if(t)e.dataTransfer.setData('text/plain',t.dataset.i);});
+strip.addEventListener('dragover',e=>{e.preventDefault();strip.classList.add('drag');});
+strip.addEventListener('dragleave',()=>strip.classList.remove('drag'));
+strip.addEventListener('drop',e=>{e.preventDefault();strip.classList.remove('drag');const i=e.dataTransfer.getData('text/plain');if(i!=='')layout.push(+i);renderCfg();});
+strip.addEventListener('click',e=>{const b=e.target.closest('button[data-j]');if(!b)return;layout.splice(+b.dataset.j,1);renderCfg();});
+document.getElementById('stories').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;stories=+b.dataset.s;document.querySelectorAll('#stories button').forEach(x=>x.classList.toggle('on',x===b));renderCfg();});
+document.getElementById('start').addEventListener('input',renderCfg);
+(()=>{const box=document.querySelector('.iso-cfg');let down=false,lx=0,raf=null,target=null;
+  const anim=()=>{if(target===null)return;const d=target-yaw;if(Math.abs(d)<.002){yaw=target;target=null;drawCfg3D();return;}yaw+=d*.18;drawCfg3D();raf=requestAnimationFrame(anim);};
+  box.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;down=true;lx=e.clientX;box.classList.add('dragging');box.setPointerCapture(e.pointerId);target=null;});
+  box.addEventListener('pointermove',e=>{if(!down)return;yaw+=(e.clientX-lx)*.012;lx=e.clientX;drawCfg3D();});
+  const up=()=>{down=false;box.classList.remove('dragging');};box.addEventListener('pointerup',up);box.addEventListener('pointercancel',up);
+  document.getElementById('rotL').addEventListener('click',()=>{target=(target??yaw)-Math.PI/4;cancelAnimationFrame(raf);anim();});
+  document.getElementById('rotR').addEventListener('click',()=>{target=(target??yaw)+Math.PI/4;cancelAnimationFrame(raf);anim();});
+})();
+document.getElementById('shapes').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;shape=b.dataset.sh;document.querySelectorAll('#shapes button').forEach(x=>x.classList.toggle('on',x===b));renderCfg();});
+document.getElementById('reset').addEventListener('click',std);
+document.getElementById('send').addEventListener('click',()=>{
+  const counts={};layout.forEach(i=>counts[ROOMS[i].k]=(counts[ROOMS[i].k]||0)+1);
+  document.getElementById('mSum').innerHTML=Object.entries(counts).map(([k,v])=>`<li>${v} × ${k}</li>`).join('')+`<li>${{bar:'Bar',L:'L-shape',U:'Courtyard',two:'Two wings'}[shape]} · ${stories===2?'Two':'One'} story · ${document.getElementById('oSf').textContent}</li><li>Move-in estimate: ${document.getElementById('oDate').textContent}</li>`;
+  document.getElementById('modal').classList.add('on');
+});
+std();
+const YAW=new URLSearchParams(location.search).get('yaw');if(YAW){yaw=+YAW;}
+const ADD=+(new URLSearchParams(location.search).get('add')||0);for(let i=0;i<ADD;i++)layout.push(0);if(ADD)renderCfg();
+const SH=new URLSearchParams(location.search).get('shape');if(SH){const b=document.querySelector(`#shapes button[data-sh="${SH}"]`);if(b)b.click();}
+if(new URLSearchParams(location.search).get('sched'))document.getElementById('schedBtn').click();
+const SWAP=new URLSearchParams(location.search).get('swap');if(SWAP){const [a1,b1]=SWAP.split(',').map(Number);[layout[a1],layout[b1]]=[layout[b1],layout[a1]];renderCfg();}
+
+/* ---------- preview helper: ?view=build|kit|floor|time|configure ---------- */
+const VIEW=new URLSearchParams(location.search).get('view');
+if(VIEW){document.querySelectorAll('header.hero,section').forEach(el=>{if(el.id!==VIEW)el.style.display='none';});
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+  if(VIEW==='time')document.querySelectorAll('.seg').forEach(s=>s.style.width=s.dataset.w+'%');}
+/* ---------- reveal + scroll ---------- */
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>rv.observe(el));
+</script>
+</body>
+</html>

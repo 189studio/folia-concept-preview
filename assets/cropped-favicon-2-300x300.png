@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en-US" class="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='//maps-api-ssl.google.com' rel='dns-prefetch'>
+    <link href='//fonts.googleapis.com' rel='dns-prefetch'>
+    <!-- This site uses the Google Analytics by MonsterInsights plugin v7.6.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+    <script data-cfasync="false" type="text/javascript">
+        var mi_version = '7.6.0';
+        var mi_track_user = true;
+        var mi_no_track_reason = '';
+
+        var disableStr = 'ga-disable-UA-116560206-1';
+
+        /* Function to detect opted out users */
+        function __gaTrackerIsOptedOut() {
+            return document.cookie.indexOf(disableStr + '=true') > -1;
+        }
+
+        /* Disable tracking if the opt-out cookie exists. */
+        if (__gaTrackerIsOptedOut()) {
+            window[disableStr] = true;
+        }
+
+        /* Opt-out function */
+        function __gaTrackerOptout() {
+            document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+            window[disableStr] = true;
+        }
+
+        if (mi_track_user) {
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', '__gaTracker');
+
+            __gaTracker('create', 'UA-116560206-1', 'auto');
+            __gaTracker('set', 'forceSSL', true);
+            __gaTracker('require', 'displayfeatures');
+            __gaTracker('send', 'pageview');
+        } else {
+            console.log("");
+            (function() {
+                /* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+                var noopfn = function() {
+                    return null;
+                };
+                var noopnullfn = function() {
+                    return null;
+                };
+                var Tracker = function() {
+                    return null;
+                };
+                var p = Tracker.prototype;
+                p.get = noopfn;
+                p.set = noopfn;
+                p.send = noopfn;
+                var __gaTracker = function() {
+                    var len = arguments.length;
+                    if (len === 0) {
+                        return;
+                    }
+                    var f = arguments[len - 1];
+                    if (typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function') {
+                        console.log('Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason);
+                        return;
+                    }
+                    try {
+                        f.hitCallback();
+                    } catch (ex) {
+
+                    }
+                };
+                __gaTracker.create = function() {
+                    return new Tracker();
+                };
+                __gaTracker.getByName = noopnullfn;
+                __gaTracker.getAll = function() {
+                    return [];
+                };
+                __gaTracker.remove = noopfn;
+                window['__gaTracker'] = __gaTracker;
+            })();
+        }
+    </script>
+    <!-- / Google Analytics by MonsterInsights -->
+    <script type="text/javascript">
+        // window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\","svgExt":".svg","source":{"concatemoji":"https:\/\/buildfolia.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+        // !function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/iframe-stylesheet.css' id='bjd-responsive-iframe-css-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/style.min.css' id='wp-block-library-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/example.css' id='docs-custom-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/settings.css' id='rs-plugin-settings-css' media='all' rel='stylesheet' type='text/css'>
+    <!-- <style id='rs-plugin-settings-inline-css' type='text/css'>
+        #rs-demo-id {}
+    </style> -->
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/wpfront-scroll-top.min.css' id='wpfront-scroll-top-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/megamenu-style.css' id='megamenu-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/dashicons.min.css' id='dashicons-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/font-awesome.min.css' id='megamenu-fontawesome-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/genericons.css' id='megamenu-genericons-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/js_composer.min.css' id='js_composer_front-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat%3A300%2C400%2C500%2C600%2C700%2C900%2C300italic%2C400italic%2C500italic%2C600italic%2C700italic%2C900italic&#038;ver=1.0.0' id='ebor-google-font-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/bootstrap.min.css' id='ebor-bootstrap-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/plugins.css' id='ebor-plugins-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/ebor-theme-styles.css' id='ebor-theme-styles-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/ebor-style.css' id='ebor-style-css' media='all' rel='stylesheet' type='text/css'>
+    <style id='ebor-style-inline-css' type='text/css'>
+        .backgroundlink {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/icons.css' id='ebor-fonts-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/folia.css' id='ebor-folia-css' media='all' rel='stylesheet' type='text/css'>
+    <link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/jquery.fancybox-1.3.8.min.css' id='fancybox-css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var monsterinsights_frontend = {
+            "js_events_tracking": "true",
+            "download_extensions": "doc,exe,js,pdf,ppt,tgz,zip,xls",
+            "inbound_paths": "[]",
+            "home_url": "https:\/\/buildfolia.com",
+            "hash_tracking": "false"
+        };
+        /* ]]> */
+    </script>
+    <script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/frontend.min.js' type='text/javascript'></script>
+    <script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery.js' type='text/javascript'></script>
+    <script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery-migrate.min.js' type='text/javascript'></script>
+    <script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery-1.11.3.min.js' type='text/javascript'></script>
+    <script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery.imagelistexpander.js' type='text/javascript'></script>
+    <script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery.themepunch.tools.min.js' type='text/javascript'></script>
+    <script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery.themepunch.revolution.min.js' type='text/javascript'></script>
+    <link href="https://buildfolia.com/overview/" rel="canonical">
+    <link href='https://buildfolia.com/?p=888' rel='shortlink'>
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+    <link href="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/cropped-favicon-2-85x85.png" rel="icon" sizes="32x32">
+    <link href="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/cropped-favicon-2-220x220.png" rel="icon" sizes="192x192">
+    <link href="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/cropped-favicon-2-220x220.png" rel="apple-touch-icon-precomposed">
+    <meta content="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/cropped-favicon-2-300x300.png" name="msapplication-TileImage">
+    <script type="text/javascript">
+        function setREVStartSize(e) {
+            try {
+                var i = jQuery(window).width(),
+                    t = 9999,
+                    r = 0,
+                    n = 0,
+                    l = 0,
+                    f = 0,
+                    s = 0,
+                    h = 0;
+                if (e.responsiveLevels && (jQuery.each(e.responsiveLevels, function(e, f) {
+                        f > i && (t = r = f, l = e), i > f && f > r && (r = f, n = e)
+                    }), t > r && (l = n)), f = e.gridheight[l] || e.gridheight[0] || e.gridheight, s = e.gridwidth[l] || e.gridwidth[0] || e.gridwidth, h = i / s, h = h > 1 ? 1 : h, f = Math.round(h * f), "fullscreen" == e.sliderLayout) {
+                    var u = (e.c.width(), jQuery(window).height());
+                    if (void 0 != e.fullScreenOffsetContainer) {
+                        var c = e.fullScreenOffsetContainer.split(",");
+                        if (c) jQuery.each(c, function(e, i) {
+                            u = jQuery(i).length > 0 ? u - jQuery(i).outerHeight(!0) : u
+                        }), e.fullScreenOffset.split("%").length > 1 && void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 ? u -= jQuery(window).height() * parseInt(e.fullScreenOffset, 0) / 100 : void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 && (u -= parseInt(e.fullScreenOffset, 0))
+                    }
+                    f = u
+                } else void 0 != e.minHeight && f < e.minHeight && (f = e.minHeight);
+                e.c.closest(".rev_slider_wrapper").css({
+                    height: f
+                })
+            } catch (d) {
+                console.log("Failure at Presize of Slider:" + d)
+            }
+        };
+    </script>
+    <!-- Easy FancyBox 1.6.2 using FancyBox 1.3.8 - RavanH (http://status301.net/wordpress-plugins/easy-fancybox/) -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var fb_timeout = null;
+        var fb_opts = {
+            'overlayShow': true,
+            'hideOnOverlayClick': true,
+            'showCloseButton': true,
+            'width': 800,
+            'height': 600,
+            'padding': 0,
+            'margin': 40,
+            'centerOnScroll': true,
+            'enableEscapeButton': true,
+            'autoScale': true
+        };
+        var easy_fancybox_handler = function() {
+            /* IMG */
+            var fb_IMG_select = 'a[href*=".jpg"]:not(.nolightbox,li.nolightbox>a), area[href*=".jpg"]:not(.nolightbox), a[href*=".jpeg"]:not(.nolightbox,li.nolightbox>a), area[href*=".jpeg"]:not(.nolightbox), a[href*=".png"]:not(.nolightbox,li.nolightbox>a), area[href*=".png"]:not(.nolightbox), a[href*=".webp"]:not(.nolightbox,li.nolightbox>a), area[href*=".webp"]:not(.nolightbox)';
+            jQuery(fb_IMG_select).addClass('fancybox image');
+            var fb_IMG_sections = jQuery('div.gallery');
+            fb_IMG_sections.each(function() {
+                jQuery(this).find(fb_IMG_select).attr('rel', 'gallery-' + fb_IMG_sections.index(this));
+            });
+            jQuery('a.fancybox, area.fancybox, li.fancybox a').each(function() {
+                jQuery(this).fancybox(jQuery.extend({}, fb_opts, {
+                    'easingIn': 'linear',
+                    'easingOut': 'linear',
+                    'opacity': false,
+                    'hideOnContentClick': false,
+                    'titleShow': true,
+                    'titlePosition': 'over',
+                    'titleFromAlt': true,
+                    'showNavArrows': true,
+                    'enableKeyboardNav': true,
+                    'cyclic': false,
+                    'onClosed': function() {
+                        jQuery('#fancybox-wrap').hover(function() {}, function() {});
+                    },
+                    'onCleanup': function() {
+                        window.clearTimeout(fb_timeout);
+                    }
+                }));
+            });
+            /* Inline */
+            jQuery('a.fancybox-inline, area.fancybox-inline, li.fancybox-inline a').each(function() {
+                jQuery(this).fancybox(jQuery.extend({}, fb_opts, {
+                    'type': 'inline',
+                    'autoDimensions': true,
+                    'scrolling': 'no',
+                    'easingIn': 'easeOutBack',
+                    'easingOut': 'easeInBack',
+                    'opacity': false,
+                    'hideOnContentClick': false
+                }));
+            });
+            /* YouTube */
+            jQuery('a[href*="youtu.be"], area[href*="youtu.be"], a[href*="youtube.com/watch"], area[href*="youtube.com/watch"]').not('.nolightbox,li.nolightbox>a').addClass('fancybox-youtube');
+            jQuery('a.fancybox-youtube, area.fancybox-youtube, li.fancybox-youtube a').each(function() {
+                jQuery(this).fancybox(jQuery.extend({}, fb_opts, {
+                    'type': 'iframe',
+                    'width': 640,
+                    'height': 360,
+                    'titleShow': false,
+                    'titlePosition': 'float',
+                    'titleFromAlt': true,
+                    'onStart': function(selectedArray, selectedIndex, selectedOpts) {
+                        selectedOpts.href = selectedArray[selectedIndex].href.replace(new RegExp('youtu.be', 'i'), 'www.youtube.com/embed').replace(new RegExp('watch\\?(.*)v=([a-z0-9\_\-]+)(&amp;|&|\\?)?(.*)', 'i'), 'embed/$2?$1$4');
+                        var splitOn = selectedOpts.href.indexOf('?');
+                        var urlParms = (splitOn > -1) ? selectedOpts.href.substring(splitOn) : "";
+                        selectedOpts.allowfullscreen = (urlParms.indexOf('fs=0') > -1) ? false : true
+                    }
+                }));
+            });
+            /* Vimeo */
+            jQuery('a[href*="vimeo.com"], area[href*="vimeo.com"]').not('.nolightbox,li.nolightbox>a').addClass('fancybox-vimeo');
+            jQuery('a.fancybox-vimeo, area.fancybox-vimeo, li.fancybox-vimeo a').each(function() {
+                jQuery(this).fancybox(jQuery.extend({}, fb_opts, {
+                    'type': 'iframe',
+                    'width': 500,
+                    'height': 281,
+                    'titleShow': false,
+                    'titlePosition': 'float',
+                    'titleFromAlt': true,
+                    'onStart': function(selectedArray, selectedIndex, selectedOpts) {
+                        selectedOpts.href = selectedArray[selectedIndex].href.replace(new RegExp('//(www\.)?vimeo\.com/([0-9]+)(&|\\?)?(.*)', 'i'), '//player.vimeo.com/video/$2?$4');
+                        var splitOn = selectedOpts.href.indexOf('?');
+                        var urlParms = (splitOn > -1) ? selectedOpts.href.substring(splitOn) : "";
+                        selectedOpts.allowfullscreen = (urlParms.indexOf('fullscreen=0') > -1) ? false : true
+                    }
+                }));
+            });
+            /* iFrame */
+            jQuery('a.fancybox-iframe, area.fancybox-iframe, li.fancybox-iframe a').each(function() {
+                jQuery(this).fancybox(jQuery.extend({}, fb_opts, {
+                    'type': 'iframe',
+                    'width': 800,
+                    'height': 600,
+                    'titleShow': false,
+                    'titlePosition': 'float',
+                    'titleFromAlt': true,
+                    'allowfullscreen': false
+                }));
+            });
+        }
+        var easy_fancybox_auto = function() {
+            /* Auto-click */
+            setTimeout(function() {
+                jQuery('#fancybox-auto').trigger('click')
+            }, 1000);
+        }
+        /* ]]> */
+    </script>
+    <!--[if IE 8]>
+    <style type="text/css">
+        .fancybox-ie #fancybox-title-over{background-image:url(https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_title_over.png); }
+        .fancybox-bg{position:absolute;padding:0;margin:0;border:0;width:20px;height:20px;z-index:111001;}
+        #fancybox-bg-n{top:-20px;left:0;width: 100%;}#fancybox-bg-ne{top:-20px;right:-20px;}#fancybox-bg-e{top:0;right:-20px;height:100%;}#fancybox-bg-se{bottom:-20px;right:-20px;}#fancybox-bg-s{bottom:-20px;left:0;width:100%;}#fancybox-bg-sw{bottom:-20px;left:-20px;}#fancybox-bg-w{top:0;left:-20px;height:100%;}#fancybox-bg-nw {top:-20px;left:-20px;}
+        .fancybox-ie .fancybox-bg{background:transparent !important;}
+        .fancybox-ie #fancybox-bg-n{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_shadow_n.png", sizingMethod="scale");}
+        .fancybox-ie #fancybox-bg-ne{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_shadow_ne.png", sizingMethod="scale");}
+        .fancybox-ie #fancybox-bg-e{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_shadow_e.png", sizingMethod="scale");}
+        .fancybox-ie #fancybox-bg-se{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_shadow_se.png", sizingMethod="scale");}
+        .fancybox-ie #fancybox-bg-s{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_shadow_s.png", sizingMethod="scale");}
+        .fancybox-ie #fancybox-bg-sw{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_shadow_sw.png", sizingMethod="scale");}
+        .fancybox-ie #fancybox-bg-w{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_shadow_w.png", sizingMethod="scale");}
+        .fancybox-ie #fancybox-bg-nw{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/fancy_shadow_nw.png", sizingMethod="scale");}
+    </style>
+    <![endif]-->
+    <style data-type="vc_shortcodes-custom-css" type="text/css">
+        .vc_custom_1520028198817 {
+            padding-top: 0px !important;
+        }
+
+        .vc_custom_1520979334271 {
+            background-color: #0098aa !important;
+        }
+
+        .vc_custom_1521496580626 {
+            padding-top: 0px !important;
+            padding-right: 0px !important;
+            padding-bottom: 40px !important;
+            padding-left: 0px !important;
+        }
+
+        .vc_custom_1523571394976 {
+            padding-top: 0px !important;
+            padding-right: 0px !important;
+            padding-bottom: 40px !important;
+            padding-left: 0px !important;
+        }
+
+        .vc_custom_1520979728424 {
+            padding-top: 0px !important;
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+
+        .vc_custom_1518918786763 {
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+            border-top-width: 0px !important;
+            border-bottom-width: 0px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+
+        .vc_custom_1523650156582 {
+            background-color: #62a744 !important;
+        }
+
+        .vc_custom_1519526050548 {
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+            border-top-width: 0px !important;
+            border-bottom-width: 0px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+            background-position: center;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .vc_custom_1520277241372 {
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+
+        .vc_custom_1523650193248 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1537981989505 {
+            margin-top: 0px !important;
+            margin-right: 0px !important;
+            margin-bottom: 0px !important;
+            margin-left: 0px !important;
+            padding-top: 0px !important;
+            padding-right: 0px !important;
+            padding-bottom: 0px !important;
+            padding-left: 0px !important;
+        }
+
+        .vc_custom_1519434033467 {
+            background-image: url(/wp-content/themes/buildfolia/html/assets/img/construction-background-1.jpg?id=771) !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .vc_custom_1519686183658 {
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+            border-top-width: 0px !important;
+            border-bottom-width: 0px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+            background-position: center;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .vc_custom_1528842138169 {
+            margin-bottom: 30px !important;
+        }
+
+        .vc_custom_1521149010742 {
+            margin-bottom: 0px !important;
+            padding-bottom: 0px !important;
+        }
+
+        .vc_custom_1521134320222 {
+            padding-top: 0px !important;
+        }
+
+        .vc_custom_1528842073161 {
+            padding-bottom: 40px !important;
+        }
+
+        .vc_custom_1521134240433 {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+
+        .vc_custom_1520016230966 {
+            padding-top: 0px !important;
+        }
+
+        .vc_custom_1519503807907 {
+            margin-bottom: 0px !important;
+            border-bottom-width: 0px !important;
+            padding-bottom: 0px !important;
+        }
+
+        .vc_custom_1521134043180 {
+            padding-bottom: 20px !important;
+        }
+
+        .vc_custom_1519935567184 {
+            margin-top: 40px !important;
+        }
+
+        .vc_custom_1520024158422 {
+            padding-top: 40px !important;
+        }
+
+        .vc_custom_1520024164802 {
+            padding-top: 40px !important;
+        }
+
+        .vc_custom_1520024174188 {
+            padding-top: 40px !important;
+        }
+
+        .vc_custom_1520024183960 {
+            padding-top: 40px !important;
+        }
+
+        .vc_custom_1519941348828 {
+            padding-top: 40px !important;
+        }
+    </style>
+    <noscript>
+        <style type="text/css">
+            .wpb_animate_when_almost_visible {
+                opacity: 1;
+            }
+        </style>
+    </noscript>
+    <!-- <style type="text/css">
+        /** Mega Menu CSS: fs **/
+    </style> -->
+    <noscript>
+        <style type="text/css">
+            .wpb_animate_when_almost_visible {
+                opacity: 1;
+            }
+        </style>
+    </noscript>
+    <!-- <style type="text/css">
+        /** Mega Menu CSS: fs **/
+    </style> -->
+    <!-- HEAD CODE ENDS HERE -->
+
+    <title>Page not found &#8211; Build Folia</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//www.buildfolia.com' />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.buildfolia.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.5.5"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.buildfolia.com/wp-includes/css/dist/block-library/style.min.css?ver=6.5.5' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='plugin-css-css' href='https://www.buildfolia.com/wp-content/themes/buildfolia/templates/dist/styles/plugins.css?ver=6.5.5' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css-css' href='https://www.buildfolia.com/wp-content/themes/buildfolia/templates/dist/styles/main.css?ver=6.5.5' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="https://www.buildfolia.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.buildfolia.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.5.5" />
+</head>
+
+
+<body class="error404 mega-menu-primary wpb-js-composer js-comp-ver-5.4.5 vc_responsive">
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <div class="body-wrapper">
+        <div class="navbar navbar-default default">
+            <div class="container">
+                <div class="navbar-header">
+                    <div class="basic-wrapper">
+                        <a class="btn responsive-menu" data-target=".navbar-collapse" data-toggle="collapse">
+                            <i></i>
+                        </a>
+                        <div class="navbar-brand">
+                            <a href="/">
+                                <img alt="Folia" class="logo-light" src="#" srcset="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/folia-logo.png 1x, https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/folia-logo.png 2x">
+                                <img alt="Folia" class="logo-dark" src="#" srcset="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/folia-logo.png 1x, https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/folia-logo.png 2x">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <nav class="collapse navbar-collapse">
+                    <div class="mega-menu-wrap" id="mega-menu-wrap-primary">
+                        <div class="mega-menu-toggle" tabindex="0">
+                            <div class="mega-toggle-blocks-left"></div>
+                            <div class="mega-toggle-blocks-center"></div>
+                            <div class="mega-toggle-blocks-right">
+                                <div class='mega-toggle-block mega-menu-toggle-block mega-toggle-block-1' id='mega-toggle-block-1'>
+                                    <span class='mega-toggle-label'>
+                                        <span class='mega-toggle-label-closed'>MENU</span>
+                                        <span class='mega-toggle-label-open'>MENU</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="mega-menu max-mega-menu mega-menu-horizontal mega-no-js" data-breakpoint="991" data-document-click="collapse" data-effect="slide" data-effect-mobile="disabled" data-effect-speed="200" data-effect-speed-mobile="200" data-event="hover_intent" data-mobile-force-width="false" data-second-click="close" data-unbind="false" data-vertical-behaviour="standard" id="mega-menu-primary">
+                            <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-923' id='mega-menu-item-923'>
+                                <a aria-haspopup="true" class="mega-menu-link" href="/overview" tabindex="0">Overview</a>
+                                <ul class="mega-sub-menu">
+                                    <li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-916' id='mega-menu-item-916'>
+                                        <a class="mega-menu-link" href="/delivery">Delivery</a>
+                                    </li>
+                                    <li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-2278' id='mega-menu-item-2278'>
+                                        <a class="mega-menu-link" href="/projects">Projects</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-924' id='mega-menu-item-924'>
+                                <a aria-haspopup="true" class="mega-menu-link" href="/features" tabindex="0">Features</a>
+                                <ul class="mega-sub-menu">
+                                    <li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-913' id='mega-menu-item-913'>
+                                        <a class="mega-menu-link" href="/folia-ecosystem">Folia Ecosystem</a>
+                                    </li>
+                                    <li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-913' id='mega-menu-item-913'>
+                                        <a class="mega-menu-link" href="/floor-plans">Floor Plans</a>
+                                    </li>
+                                    <li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-912' id='mega-menu-item-912'>
+                                        <a class="mega-menu-link" href="/customization">Customization</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='mega-socialmenu mega-linkedin mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-1306 socialmenu linkedin' id='mega-menu-item-1306'>
+                                <a class="mega-menu-link" href="https://www.linkedin.com/company/build-folia" tabindex="0" target="_blank">linkedin</a>
+                            </li>
+                            <li class='mega-socialmenu mega-instagram mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-1307 socialmenu instagram' id='mega-menu-item-1307'>
+                                <a class="mega-menu-link" href="https://www.instagram.com/buildfolia" tabindex="0" target="_blank">instagram</a>
+                            </li>
+                            <li class='mega-socialmenu mega-twitter mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-2367 socialmenu twitter' id='mega-menu-item-2367'>
+                                <a class="mega-menu-link" href="https://twitter.com/buildfolia" tabindex="0" target="_blank">twitter</a>
+                            </li>
+                            <li class='mega-socialmenu mega-facebook mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-1308 socialmenu facebook' id='mega-menu-item-1308'>
+                                <a class="mega-menu-link" href="https://www.facebook.com/BuildFolia" tabindex="0" target="_blank">facebook</a>
+                            </li>
+                            <li class='mega-discover mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-925 discover' id='mega-menu-item-925'>
+                                <a aria-haspopup="true" class="mega-menu-link" href="/teampage" tabindex="0">About</a>
+                                <ul class="mega-sub-menu">
+                                    <!-- <li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1300' id='mega-menu-item-1300'>
+                                        <a class="mega-menu-link" href="/teampage">Team</a>
+                                    </li> -->
+                                    <li class='mega-lowercase mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-909 lowercase' id='mega-menu-item-909'>
+                                        <a class="mega-menu-link" href="/faqs">FAQs</a>
+                                    </li>
+                                    <li class='mega-hidden mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-908 hidden' id='mega-menu-item-908'>
+                                        <a class="mega-menu-link" href="/news">News</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='mega-talk mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-1743 talk' id='mega-menu-item-1743'>
+                                <a class="mega-menu-link" href="/contact" tabindex="0">Let's Chat</a>
+                            </li>
+                            <!--
+                            <li class='mega-searchbox mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-has-icon mega-hide-text mega-hide-on-mobile mega-menu-item-928 searchbox' id='mega-menu-item-928'>
+                                <a aria-haspopup="true" aria-label="Search" class="genericon-search mega-menu-link" href="#" tabindex="0"></a>
+                                <ul class="mega-sub-menu">
+                                    <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-930' d='mega-menu-item-930'>
+                                        <div class='mega-search-wrap mega-static'>
+                                            <form action='/' class='mega-search mega-search-open' role='search'>
+                                                <input type='submit' value='Search'> <input data-placeholder='Find what you’re looking for...' name='s' placeholder='Find what you’re looking for...' type='text'>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='mega-mobilesearch mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon mega-hide-text mega-hide-on-desktop mega-menu-item-941 mobilesearch' id='mega-menu-item-941'>
+                                <div class='mega-search-wrap mega-static'>
+                                    <form action='/' class='mega-search mega-search-open' role='search'>
+                                        <input type='submit' value='Search'> <input data-placeholder='Find what you’re looking for...' name='s' placeholder='Find what you’re looking for...' type='text'>
+                                    </form>
+                                </div>
+                            </li>
+                            -->
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+<div class="page-404">
+  <section class="banner-second-level">
+    <div class="bg-img"></div>
+    <div class="container">
+      <div class="text-container">
+        <p class="col-12 wow fadeInUp" data-wow-delay="0.2s">404 error</p>
+        <h1 class="col-12 wow fadeInUp" data-wow-delay="0.3s">No Results Found</h1>
+        <h5 class="col-12 wow fadeInUp" data-wow-delay="0.4s">The page you requested could not be found. Try refining your search, or use the navigation above to locate the post.</h5>
+        <div class="search-box wow fadeInUp" data-wow-delay="0.5s">
+          <form class="top-search" action="/" >
+            <input type="text" class="top-search-input" placeholder="Start your search here..." name="s">
+            <button type="submit" class="btn btn-trnsprnt" value="Search">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="inverse-wrapper">
+    <div class="container inner">
+        <div class="row">
+            <div class="col-md-12 text-center footerlogo">
+                <a href="">
+                    <img align="center" alt="Folia"
+                        src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/folia-logo-white.png"
+                        width="150">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="widget clearfix widget_nav_menu" id="nav_menu-4">
+                    <div class="menu-main-container">
+                        <ul class="menu" id="menu-main">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-923"
+                                id="menu-item-923">
+                                <a href="/overview">Overview</a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-916"
+                                        id="menu-item-916">
+                                        <a href="/delivery">Delivery</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2278"
+                                        id="menu-item-2278">
+                                        <a href="/projects">Projects</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-924"
+                                id="menu-item-924">
+                                <a href="/features">Features</a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-913"
+                                        id="menu-item-913">
+                                        <a href="/floor-plans">Floor Plans</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-912"
+                                        id="menu-item-912">
+                                        <a href="/customization">Customization</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="socialmenu linkedin menu-item menu-item-type-custom menu-item-object-custom menu-item-1306 d-none"
+                                id="menu-item-1306">
+                                <a href="https://www.linkedin.com/company/build-folia" target="_blank">linkedin</a>
+                            </li>
+                            <li class="socialmenu instagram menu-item menu-item-type-custom menu-item-object-custom menu-item-1307 d-none"
+                                id="menu-item-1307">
+                                <a href="https://www.instagram.com/buildfolia" target="_blank">instagram</a>
+                            </li>
+                            <li class="socialmenu twitter menu-item menu-item-type-custom menu-item-object-custom menu-item-2367 d-none"
+                                id="menu-item-2367">
+                                <a href="https://twitter.com/buildfolia" target="_blank">twitter</a>
+                            </li>
+                            <li class="socialmenu facebook menu-item menu-item-type-custom menu-item-object-custom menu-item-1308 d-none"
+                                id="menu-item-1308">
+                                <a href="https://www.facebook.com/BuildFolia" target="_blank">facebook</a>
+                            </li>
+                            <li class="discover menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-925"
+                                id="menu-item-925">
+                                <a href="/teampage">About</a>
+                                <ul class="sub-menu">
+                                    <li class="lowercase menu-item menu-item-type-post_type menu-item-object-page menu-item-909"
+                                        id="menu-item-909">
+                                        <a href="/faqs">FAQs</a>
+                                    </li>
+                                    <!-- <li class="hidden menu-item menu-item-type-post_type menu-item-object-page menu-item-908" id="menu-item-908">
+                                                <a href="/news">News</a>
+                                            </li> -->
+                                </ul>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1743"
+                                id="menu-item-1743">
+                                <a href="/contact">Let&#8217;s Chat</a>
+                            </li>
+                            <li class="searchbox menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-928"
+                                id="menu-item-928">
+                                <a href="#">Search</a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-930"
+                                        id="menu-item-930">
+                                        <a href="#">Search Box</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="mobilesearch menu-item menu-item-type-custom menu-item-object-custom menu-item-941"
+                                id="menu-item-941">
+                                <a href="#">Mobile Search</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="widget clearfix widget_text" id="text-10">
+                    <div class="textwidget">
+                        <p><strong>FOLIA</strong><br>
+                            2244 Blach Place, Suite 100 San Jose, CA 95131 408.244.7100<br>
+                            <a href="mailto:discover@buildfolia.com">discover@buildfolia.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="widget clearfix widget_text" id="text-11">
+                    <div class="textwidget">
+                        <p>Built by Blach Construction CCL #290418<br>
+                            &copy; 2026 Folia. All rights reserved. <a href="privacy-policy">Privacy Policy</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</footer>
+
+<div id="share-bar"></div>
+</div>
+<script type="text/javascript">
+    var pixelRatio = window.devicePixelRatio || 1;
+    if (window.innerWidth / pixelRatio < 641) {
+        easy_fancybox_handler = null;
+    };
+</script>
+<script>
+    (function (global, $) {
+        $('.vc_row').imagelistexpander({
+            prefix: "gallery-"
+        });
+    })(this, jQuery)
+</script>
+<div id="wpfront-scroll-top-container">
+    <img alt="" src="https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/img/slider-left-arrow.png">
+</div>
+<script type="text/javascript">
+    function wpfront_scroll_top_init() { if (typeof wpfront_scroll_top == "function" && typeof jQuery !== "undefined") { wpfront_scroll_top({ "scroll_offset": 200, "button_width": 40, "button_height": 40, "button_opacity": 0.8, "button_fade_duration": 200, "scroll_duration": 400, "location": 1, "marginX": 20, "marginY": 20, "hide_iframe": false, "auto_hide": "on", "auto_hide_after": 2, "button_action": "top", "button_action_element_selector": "", "button_action_container_selector": "html, body", "button_action_element_offset": 0 }); } else { setTimeout(wpfront_scroll_top_init, 100); } } wpfront_scroll_top_init();
+</script>
+<script type="text/javascript">
+    function revslider_showDoubleJqueryError(sliderID) {
+        var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";
+        errorMessage += "<br> This includes make eliminates the revolution slider libraries, and make it not work.";
+        errorMessage += "<br><br> To fix it you can:<br>&nbsp;&nbsp;&nbsp; 1. In the Slider Settings -> Troubleshooting set option:  <strong><b>Put JS Includes To Body<\/b><\/strong> option to true.";
+        errorMessage += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jquery.js include and remove it.";
+        errorMessage = "<span style='font-size:16px;color:#BC0C06;'>" + errorMessage + "<\/span>";
+        jQuery(sliderID).show().html(errorMessage);
+    }
+</script>
+<link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/animate.min.css' id='animate-css-css' media='all'
+    rel='stylesheet' type='text/css'>
+<link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/mediaelementplayer-legacy.min.css'
+    id='mediaelement-css' media='all' rel='stylesheet' type='text/css'>
+<link href='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/css/wp-mediaelement.min.css' id='wp-mediaelement-css'
+    media='all' rel='stylesheet' type='text/css'>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/wpfront-scroll-top.min.js'
+    type='text/javascript'></script>
+<script src='https://maps-api-ssl.google.com/maps/api/js' type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/bootstrap.min.js'
+    type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/plugins.js' type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/scripts.js' type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/hoverIntent.min.js'
+    type='text/javascript'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var megamenu = { "timeout": "300", "interval": "100" };
+    /* ]]> */
+</script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/maxmegamenu.js' type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/public.js' type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/wp-embed.min.js' type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/js_composer_front.min.js'
+    type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/waypoints.min.js'
+    type='text/javascript'></script>
+<!-- <script type='text/javascript'>
+    var mejsL10n = {"language":"en","strings":{"mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer","mejs.fullscreen-off":"Turn off Fullscreen","mejs.fullscreen-on":"Go Fullscreen","mejs.download-video":"Download Video","mejs.fullscreen":"Fullscreen","mejs.time-jump-forward":["Jump forward 1 second","Jump forward %1 seconds"],"mejs.loop":"Toggle Loop","mejs.play":"Play","mejs.pause":"Pause","mejs.close":"Close","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.time-skip-back":["Skip back 1 second","Skip back %1 seconds"],"mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.mute-toggle":"Mute Toggle","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.ad-skip":"Skip ad","mejs.ad-skip-info":["Skip in 1 second","Skip in %1 seconds"],"mejs.source-chooser":"Source Chooser","mejs.stop":"Stop","mejs.speed-rate":"Speed Rate","mejs.live-broadcast":"Live Broadcast","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+    </script> -->
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/mediaelement-and-player.min.js'
+    type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/mediaelement-migrate.min.js'
+    type='text/javascript'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var _wpmejsSettings = { "pluginPath": "\https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets\/js\/", "classPrefix": "mejs-", "stretching": "responsive" };
+    /* ]]> */
+</script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/wp-mediaelement.min.js'
+    type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/vimeo.min.js' type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/skrollr.min.js' type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery.fancybox-1.3.8.min.js'
+    type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery.mousewheel.min.js'
+    type='text/javascript'></script>
+<script src='https://www.buildfolia.com/wp-content/themes/buildfolia/html/assets/js/jquery.metadata.min.js'
+    type='text/javascript'></script>
+<script type="text/javascript">
+    jQuery(document).on('ready post-load', function () { jQuery('.nofancybox,a.pin-it-button,a[href*="pinterest.com/pin/create"]').addClass('nolightbox'); });
+    jQuery(document).on('ready post-load', easy_fancybox_handler);
+    jQuery(document).on('ready', easy_fancybox_auto);
+</script>
+<script type="text/javascript" src="https://www.buildfolia.com/wp-content/themes/buildfolia/templates/dist/scripts/plugins.js?ver=6.5.5" id="plugins-js-js"></script>
+<script type="text/javascript" src="https://www.buildfolia.com/wp-content/themes/buildfolia/templates/dist/scripts/main.js?ver=6.5.5" id="main-js-js"></script>
+</body>
+
+</html>
