@@ -51,6 +51,13 @@ nav ul a{text-decoration:none;opacity:.8} nav ul a:hover{opacity:1;color:var(--g
 .hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
 .hero-photo{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(18,87,136,.18)}
 .hero-photo>img{display:block;width:100%;height:400px;object-fit:cover}
+.cmp-draw{position:absolute;inset:0;background:#F6F5F2;background-image:linear-gradient(#ECEBE6 1px,transparent 1px),linear-gradient(90deg,#ECEBE6 1px,transparent 1px);background-size:22px 22px;clip-path:inset(0 50% 0 0)}
+.cmp-draw svg{width:100%;height:100%}
+.cmp-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.08);cursor:ew-resize;touch-action:none}
+.cmp-handle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:#0C6938;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.cmp-tag{position:absolute;top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.92);color:#0C6938}
+.cmp-tag.l{left:14px} .cmp-tag.r{right:14px}
+#cmp{cursor:ew-resize;user-select:none}
 .hero-badge{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.94);border-radius:10px;padding:12px 16px;display:flex;gap:12px;align-items:center}
 .hero-badge img{width:34px;height:34px;object-fit:contain}
 .hero-badge b{display:block;font-size:15px} .hero-badge span{font-size:12px;color:var(--muted)}
@@ -60,10 +67,24 @@ nav ul a{text-decoration:none;opacity:.8} nav ul a:hover{opacity:1;color:var(--g
 .quote cite{font-style:normal;font-size:13px;color:var(--muted)}
 .quote cite b{display:block;font-size:15px;color:var(--ink);letter-spacing:.04em;text-transform:uppercase}
 @media (max-width:980px){.quote{grid-template-columns:1fr}}
-.parts{grid-template-columns:repeat(7,1fr)!important}
+.tray-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:18px;align-items:center}
+#trayIso{width:100%;height:auto}
+#trayIso g{transition:opacity .35s}
+.parts{grid-template-columns:repeat(4,1fr)!important}
+.part{cursor:pointer}
+.part.on{border-color:var(--green);box-shadow:0 0 0 3px #E4F0DC;transform:translateY(-3px)}
+@media (max-width:980px){.tray-grid{grid-template-columns:1fr}}
 .proof img{width:38px;height:38px;object-fit:contain;display:block;margin-bottom:14px}
 .proof img.inv{background:var(--green);border-radius:6px;padding:5px}
 .venn-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end}
+.venn{background:#fff;border-radius:12px;padding:10px}
+.venn svg{width:100%;display:block}
+.venn .vt{font:700 12px Montserrat;fill:#fff;letter-spacing:.06em}
+.venn .vs{font:700 11.5px Montserrat;fill:#867870;letter-spacing:.04em}
+.venn .vg{font:600 9.5px Montserrat;fill:#867870;letter-spacing:.22em}
+.venn .vl,.venn .vr,.venn .vc{transition:transform 1.1s cubic-bezier(.2,.7,.2,1),opacity 1s}
+.venn .vl{transform:translateX(-70px);opacity:0}.venn .vr{transform:translateX(70px);opacity:0}.venn .vc{transform:scale(.6);transform-origin:280px 150px;opacity:0}
+.venn.in .vl,.venn.in .vr{transform:none;opacity:1}.venn.in .vc{transform:none;opacity:1;transition-delay:.35s}
 .sys{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .sys div{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:16px}
 .sys .ico{display:flex;width:52px;height:52px;border-radius:10px;background:var(--green);align-items:center;justify-content:center;margin-bottom:10px}
@@ -338,13 +359,16 @@ html,body{overflow-x:hidden}
         <p class="lead">Folia is an evolutionary building system that unites the quality and flexibility of conventional construction with the cost and schedule savings of modular.</p>
         <div class="ctas"><a class="btn" href="#build">See how it goes together &darr;</a><a class="btn ghost" href="#configure">Design your building in 3D</a></div>
       </div>
-      <div class="hero-photo reveal"><img src="assets/hero_image.png" alt="Two-story Folia classroom buildings around a landscaped courtyard">
+      <div class="hero-photo reveal" id="cmp"><img src="assets/hero_image.png" alt="Two-story Folia classroom buildings around a landscaped courtyard">
+        <div class="cmp-draw" id="cmpDraw"><svg id="heroIso" viewBox="-40 -60 900 600" preserveAspectRatio="xMidYMid meet"></svg></div>
+        <div class="cmp-handle" id="cmpHandle"><span>&#8249;&#8250;</span></div>
+        <span class="cmp-tag l">The system</span><span class="cmp-tag r">Built</span>
         <div class="hero-badge"><img src="assets/timely-construction.png" alt=""><div><b>40,000 sf &middot; 22 classrooms &middot; 9 months</b><span>Cupertino High School, built with Folia</span></div></div>
       </div>
     </div>
     <div class="tray reveal">
       <div class="tray-head"><span class="mono muted">The system &middot; two-story building</span><span class="sample">Sample counts</span></div>
-      <div class="parts" id="parts"></div>
+      <div class="tray-grid"><svg id="trayIso" viewBox="-30 -70 760 560"></svg><div class="parts" id="parts"></div></div>
     </div>
     <div class="proof">
       <div><img src="assets/timely-construction.png" alt=""><b>1 yr+</b><span>faster to occupancy*</span></div>
@@ -370,7 +394,13 @@ html,body{overflow-x:hidden}
         <div><span class="ico"><img src="assets/pre-engineered-icon.png" alt=""></span><b>Pre-engineered</b><small>A DSA Pre-Check approved two-story plan</small></div>
       </div>
     </div>
-    <div class="reveal"><img src="assets/website-venn-diagram-FINAL-e1520980874241.png" alt="Folia between modular and custom site-built construction: lower cost, shorter schedule, better quality, more flexibility" style="width:100%;border-radius:12px;background:#fff;display:block"></div>
+    <div class="venn" id="venn" role="img" aria-label="Folia between modular and custom site-built construction: lower cost and shorter schedule from modular, better quality and more flexibility from custom">
+      <svg viewBox="0 0 560 330">
+        <g class="vl"><circle cx="150" cy="150" r="96" fill="#C5D9AE"/><text x="128" y="125" text-anchor="middle" class="vt">MODULAR</text><text x="150" y="292" text-anchor="middle" class="vs">LOWER COST</text><text x="150" y="312" text-anchor="middle" class="vs">SHORTER SCHEDULE</text></g>
+        <g class="vr"><circle cx="410" cy="150" r="96" fill="#C5D9AE"/><text x="432" y="118" text-anchor="middle" class="vt">CUSTOM</text><text x="432" y="134" text-anchor="middle" class="vt">SITE-BUILT</text><text x="410" y="292" text-anchor="middle" class="vs">BETTER QUALITY</text><text x="410" y="312" text-anchor="middle" class="vs">MORE FLEXIBILITY</text></g>
+        <g class="vc"><circle cx="280" cy="150" r="128" fill="#FCEBD0" stroke="#fff" stroke-width="6"/><image href="assets/folia-logo.png" x="200" y="112" width="160" height="43"/><text x="280" y="184" text-anchor="middle" class="vg">DESIGNED TO INSPIRE.</text><text x="280" y="200" text-anchor="middle" class="vg">BUILT TO LAST.</text></g>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -630,7 +660,36 @@ const PARTS=[
   ['Elevator','×1',`<g fill="none" stroke="#1F2522" stroke-width="2"><rect x="34" y="6" width="32" height="46"/><path d="M50 6V52M42 18l4-5 4 5M42 40l4 5 4-5"/></g>`],
   ['Stairs','×2',`<g fill="none" stroke="#1F2522" stroke-width="2"><path d="M16 52 V44 H28 V36 H40 V28 H52 V20 H64 V12 H80"/></g>`]
 ];
-document.getElementById('parts').innerHTML=PARTS.map(p=>`<div class="part"><svg viewBox="0 0 100 58">${p[2]}</svg><b>${p[0]}</b><span>${p[1]}</span></div>`).join('');
+document.getElementById('parts').innerHTML=PARTS.map((p,i)=>`<div class="part" data-i="${i}"><svg viewBox="0 0 100 58">${p[2]}</svg><b>${p[0]}</b><span>${p[1]}</span></div>`).join('');
+/* ---------- dynamic top: tray iso, hero compare, count-up, venn ---------- */
+setTimeout(()=>{
+  // tray mini building
+  const tP=mkP(24,330,215), TB=building({L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true,P0:tP});
+  const TL=['slab','frameB','deck','frameF','panel','glass','roof','pv','extra'];
+  document.getElementById('trayIso').innerHTML=`<ellipse cx="350" cy="470" rx="330" ry="46" fill="#ECEBE6"/>`+TL.map(k=>`<g id="T_${k}">${TB[k]||''}</g>`).join('');
+  const MAP=[['frameB','frameF'],['frameB','extra'],['panel'],['glass'],['roof','pv'],['extra','deck'],['extra','deck']];
+  const cards=[...document.querySelectorAll('#parts .part')];let auto=true,ai=0;
+  const show=i=>{cards.forEach((c,j)=>c.classList.toggle('on',j===i));TL.forEach(k=>{const g=document.getElementById('T_'+k);g.style.opacity=(i===null||k==='slab'||MAP[i].includes(k))?1:.12;});};
+  cards.forEach((c,i)=>{c.addEventListener('mouseenter',()=>{auto=false;show(i);});c.addEventListener('click',()=>{auto=false;show(i);});});
+  document.getElementById('parts').addEventListener('mouseleave',()=>{show(null);});
+  setInterval(()=>{if(!auto)return;show(ai%cards.length);ai++;},1800);
+  // hero compare drawing (L-shaped two-story)
+  const hP=mkP(21,420,185);
+  document.getElementById('heroIso').innerHTML=drawBld({L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true,dx:0,dy:0},hP)+drawBldRot({L:8,W:6,stories:2,h:3.7,glass:[1,2],balcony:true,dx:8,dy:6},hP);
+  const cmp=document.getElementById('cmp'),draw=document.getElementById('cmpDraw'),hd=document.getElementById('cmpHandle');
+  const setPos=v=>{v=Math.max(4,Math.min(96,v));draw.style.clipPath=`inset(0 ${100-v}% 0 0)`;hd.style.left=v+'%';};
+  let dragging=false;
+  const at=e=>{const r=cmp.getBoundingClientRect();return (e.clientX-r.left)/r.width*100;};
+  cmp.addEventListener('pointerdown',e=>{dragging=true;cmp.setPointerCapture(e.pointerId);setPos(at(e));});
+  cmp.addEventListener('pointermove',e=>{if(dragging)setPos(at(e));});
+  cmp.addEventListener('pointerup',()=>dragging=false);
+  let t0=null;const sweep=ts=>{if(dragging)return;if(!t0)t0=ts;const k=Math.min(1,(ts-t0)/2200);const e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;setPos(92-42*e);if(k<1)requestAnimationFrame(sweep);};
+  setPos(92);setTimeout(()=>requestAnimationFrame(sweep),600);
+  // count-up
+  const cu=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;cu.unobserve(en.target);const b=en.target,txt=b.dataset.t||b.textContent;b.dataset.t=txt;const nums=txt.match(/\d+/g);if(!nums)return;let st=null;
+    const step=ts=>{if(!st)st=ts;const k=Math.min(1,(ts-st)/1200),e=1-Math.pow(1-k,3);let i=0;b.textContent=txt.replace(/\d+/g,m=>Math.round(+m*e));if(k<1)requestAnimationFrame(step);else b.textContent=txt;};requestAnimationFrame(step);}),{threshold:.6});
+  document.querySelectorAll('.proof b').forEach(b=>{if(/\d/.test(b.textContent))cu.observe(b);});
+},0);
 
 /* ---------- exploded build ---------- */
 const STEPS=[
@@ -960,6 +1019,7 @@ if(VIEW){document.querySelectorAll('header.hero,section').forEach(el=>{if(el.id!
 /* ---------- reveal + scroll ---------- */
 const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target);}}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>rv.observe(el));
+rv.observe(document.getElementById('venn'));
 </script>
 </body>
 </html>
