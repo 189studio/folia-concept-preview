@@ -238,7 +238,8 @@ section.block{padding:64px 0;border-top:1px solid var(--rule)}
 .schedbtn{display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;border:0;background:#fff;color:#0C6938;cursor:pointer}
 .schedbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
 .schedbtn:hover{background:#A0BC79;color:#222}
-#cfgPlan{width:100%;display:block;margin-bottom:8px}
+#cfgPlan{width:100%;display:block;margin-bottom:8px;border-radius:8px;transition:background .15s}
+#cfgPlan.drop{background:rgba(160,188,121,.12);outline:1.5px dashed #A0BC79}
 #cfgPlan .rm{cursor:pointer;transition:opacity .15s}
 #cfgPlan .rm:hover{opacity:.85}
 .modal .card.sched{max-width:860px}
@@ -473,7 +474,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <div class="site-top"><h4 class="mono" style="margin:0;color:#9AA39C;font-weight:500">Your building</h4><span class="mono" style="color:#9AA39C" id="roomCount"></span></div>
         <div class="iso-cfg"><svg id="cfgIso" viewBox="-60 -40 960 700"></svg>
           <div class="rotctl"><button id="rotL" aria-label="Rotate left">&#8634;</button><span>Drag to rotate</span><button id="rotR" aria-label="Rotate right">&#8635;</button></div></div>
-        <div class="planbar"><div class="ftabs" id="ftabs"></div><span class="phint">Click two rooms to swap them. The facade follows.</span><button class="schedbtn" id="schedBtn"><svg viewBox="0 0 24 24"><path d="M4 6h10M4 12h14M4 18h7"/></svg>Schedule</button></div>
+        <div class="planbar"><div class="ftabs" id="ftabs"></div><span class="phint">Drag rooms in from the list, or click two rooms to swap them. The facade follows.</span><button class="schedbtn" id="schedBtn"><svg viewBox="0 0 24 24"><path d="M4 6h10M4 12h14M4 18h7"/></svg>Schedule</button></div>
         <svg id="cfgPlan" viewBox="0 0 860 230"></svg>
         <div class="planstrip" id="strip"></div>
       </div>
@@ -813,6 +814,15 @@ function drawPlan(){
 document.getElementById('cfgPlan').addEventListener('click',e=>{const g=e.target.closest('.rm');if(!g)return;const i=+g.dataset.idx;
   if(selIdx===null){selIdx=i;drawPlan();return;}
   if(selIdx!==i){[layout[selIdx],layout[i]]=[layout[i],layout[selIdx]];}selIdx=null;renderCfg();});
+(()=>{const pl=document.getElementById('cfgPlan');let hot=null;
+  const target=e=>{const el=document.elementFromPoint(e.clientX,e.clientY);return el&&el.closest?el.closest('.rm'):null;};
+  const mark=g=>{if(hot&&hot!==g){const r=hot.querySelector('rect');r.setAttribute('stroke',r.dataset.s||'#16301F');r.setAttribute('stroke-width',r.dataset.w||1.5);}
+    if(g&&g!==hot){const r=g.querySelector('rect');r.dataset.s=r.getAttribute('stroke');r.dataset.w=r.getAttribute('stroke-width');r.setAttribute('stroke','#FFFFFF');r.setAttribute('stroke-width',4);}hot=g;};
+  pl.addEventListener('dragover',e=>{e.preventDefault();pl.classList.add('drop');mark(target(e));});
+  pl.addEventListener('dragleave',()=>{pl.classList.remove('drop');mark(null);});
+  pl.addEventListener('drop',e=>{e.preventDefault();pl.classList.remove('drop');const ri=e.dataTransfer.getData('text/plain');if(ri==='')return;const g=target(e);mark(null);
+    if(g)layout.splice(+g.dataset.idx,0,+ri);else layout.push(+ri);selIdx=null;renderCfg();});
+})();
 document.getElementById('ftabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;planFloor=+b.dataset.f;drawPlan();});
 function monthLabel(ym,m){const [y,mo]=ym.split('-').map(Number);const d=new Date(y,mo-1+m,1);return d.toLocaleString('en-US',{month:'short',year:'2-digit'});}
 document.getElementById('schedBtn').addEventListener('click',()=>{
