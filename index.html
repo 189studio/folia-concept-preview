@@ -298,6 +298,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .legend{display:none}
   .cal-row,.cal-axis{grid-template-columns:90px 1fr 60px}
 }
+@media (max-width:980px){ .hero-grid>*,.cfg>*,.kit>*,.floor>*,.venn-grid>*,.sec-head>*{min-width:0} }
+html,body{overflow-x:hidden}
+@media (max-width:600px){
+  .wrap{padding:0 16px} .hero h1{font-size:44px} .hero-photo>img{height:240px}
+  .parts{grid-template-columns:repeat(2,1fr)!important} .proof{grid-template-columns:1fr 1fr}
+  .sys{grid-template-columns:1fr} .tabs{gap:6px} .tab{padding:8px 12px;font-size:13px}
+  .kit-stage{height:320px} #build .stage{height:300px} .stepper{grid-template-columns:repeat(4,1fr)}
+  .stepper span.l{font-size:10.5px} .bbar{flex-wrap:wrap} .final-photo{display:none}
+  .cal-row,.cal-axis{grid-template-columns:70px 1fr 44px} .seg{font-size:0}
+  .iso-cfg{height:260px} .cinfo{align-items:flex-start} .quote p{font-size:15px}
+  .banner{font-size:10px} nav .btn{padding:9px 12px;font-size:12px} .logo small{display:none}
+}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
   .reveal{opacity:1;transform:none}
@@ -327,7 +339,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <div class="ctas"><a class="btn" href="#build">See how it goes together &darr;</a><a class="btn ghost" href="#configure">Design your building in 3D</a></div>
       </div>
       <div class="hero-photo reveal"><img src="assets/hero_image.png" alt="Two-story Folia classroom buildings around a landscaped courtyard">
-        <div class="hero-badge"><img src="assets/timely-construction.png" alt=""><div><b>32,000 sf in 9 months</b><span>Delivered with Folia</span></div></div>
+        <div class="hero-badge"><img src="assets/timely-construction.png" alt=""><div><b>40,000 sf &middot; 22 classrooms &middot; 9 months</b><span>Cupertino High School, built with Folia</span></div></div>
       </div>
     </div>
     <div class="tray reveal">
@@ -340,7 +352,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div><img src="assets/arrow-on-target.png" alt=""><b>DSA</b><span>Pre-Check approved two-story plan</span></div>
       <div><img src="assets/pre-engineered-icon.png" alt="" class="inv"><b>50 yr</b><span>typical design life for steel-framed buildings</span></div>
     </div>
-    <p class="muted" style="font-size:11.5px;margin:14px 0 0">*Standard Folia plans, compared with comparable traditionally designed and built buildings.</p>
+    <p class="muted" style="font-size:11.5px;margin:14px 0 0">*As Folia reports for standard plans, compared with comparable traditionally designed and built buildings.</p>
     <blockquote class="quote reveal"><p>&ldquo;We were looking for a superior quality and cost-effective solution to support the enrollment growth at Cupertino High School and Folia fit our needs perfectly&hellip; The overall value we&rsquo;ve received is impressive, saving the District almost $6 million.&rdquo;</p><cite><b>Polly Bove</b>Superintendent, Fremont Union High School District</cite></blockquote>
   </div>
 </header>
@@ -434,7 +446,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       </div><span class="mono">36 mo</span></div>
       <div class="cal-row"><b>Folia</b><div class="track">
         <div class="seg" data-w="14" style="left:0;background:#A0BC79;color:#222">Design</div>
-        <div class="seg" data-w="11" style="left:14%;background:var(--green)" title="DSA review, shortened by Pre-Check">DSA (Pre-Check)</div>
+        <div class="seg" data-w="11" style="left:14%;background:var(--green)" title="DSA review, shortened by Pre-Check">DSA</div>
         <div class="seg" data-w="22" style="left:25%;background:var(--green-d)">Factory</div>
         <div class="seg l2" data-w="22" style="left:25%;background:var(--blue)"></div>
         <div class="seg" data-w="16" style="left:47%;background:#0A4F2A">Assembly + interiors</div>
@@ -481,19 +493,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div class="readout">
         <h4>Estimate <span class="sample" style="margin-left:6px">Sample</span></h4>
         <div class="stat"><label>Gross area</label><b id="oSf">0 sf</b><small>Rooms plus about 25% for restrooms, stairs, elevator and support space</small></div>
-        <div class="stat"><label>Start design</label><input type="month" id="start" value="2027-03"></div>
-        <div class="stat"><label>Students move in</label><b id="oDate">&ndash;</b><small id="oConv"></small></div>
+        
+        <div class="stat"><label>Recent Folia projects</label><b>9&ndash;11 months</b><small>Construction time at Cupertino, Fremont and San Benito, as published by Blach</small></div>
         <div class="stat"><label>Cost</label><b>10&ndash;20% below</b><small>a comparable site-built building, for standard Folia plans</small></div>
         <div class="badge" id="badge"></div>
-        <button class="btn" id="send">Send this layout to the Folia team</button>
+        <button class="btn" id="send">Request a feasibility conversation</button>
       </div>
     </div>
     <p class="fine">All estimates on this page are sample placeholders for the concept. A live version would use figures supplied and approved by Blach. Schedule assumes Folia&rsquo;s advantage of at least one year over conventional construction; cost bands are illustrative only.</p>
   </div>
 </section>
 
-<section class="contact" id="contact"><div class="wrap"><div><div class="kicker" style="color:#A0BC79">Let&rsquo;s chat</div><h2>Talk to the Folia team.</h2></div>
-  <div class="cinfo"><a class="btn" href="mailto:discover@buildfolia.com">discover@buildfolia.com</a><span>408.244.7100 &middot; 2244 Blach Place, Suite 100, San Jose, CA 95131</span></div></div></section>
+<section class="contact" id="contact"><div class="wrap"><div><div class="kicker" style="color:#A0BC79">Let&rsquo;s chat</div><h2>Request a feasibility conversation.</h2></div>
+  <div class="cinfo"><a class="btn" href="mailto:discover@buildfolia.com?subject=Feasibility%20conversation">Email discover@buildfolia.com</a><span>408.244.7100 &middot; 2244 Blach Place, Suite 100, San Jose, CA 95131</span></div></div></section>
 <footer>
   <div class="wrap">
     <span style="display:flex;align-items:center;gap:14px"><img src="assets/folia-logo.png" alt="Folia" style="height:28px">Designed to inspire. Built to last. &middot; A building system by Blach Construction</span>
@@ -683,10 +695,10 @@ if(forced===null&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
 const TYPES=[
   {img:'Folia-One-Story-scaled-1.jpg',k:'One story',sf:'3,830 – 5,150',pub:true,o:{L:12,W:6,stories:1,h:3.9,glass:[1,2,3,4],canopy:true},sc:42,txt:'Single-level classroom buildings in two published sizes.',c:[10,16,8,10,0]},
   {img:'Folia-Two-Story-scaled-1.jpg',k:'Two story',sf:'15,100',pub:true,Lshape:true,o:{L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true},sc:28,txt:'The DSA Pre-Check approved L-shaped plan: 12 classrooms off an exterior balcony, with stairs and an elevator.',c:[16,44,14,18,2]},
-  {img:'Folia-MPR-scaled-1.jpg',k:'Multipurpose',sf:'6,000',pub:false,o:{L:10,W:8,stories:1,h:6,glass:[0,1,3,4],clerestory:true,sideGlass:true,pv:false},sc:40,txt:'A tall, open room for assemblies, dining and events.',c:[12,18,10,16,0]},
-  {img:'Folia-Gym-scaled-1.jpg',k:'Gym',sf:'9,500',pub:false,o:{L:14,W:10,stories:1,h:7.5,bay:3.5,glass:[1],clerestory:true,pv:false},sc:31,txt:'Long-span frames with clerestory daylight.',c:[16,26,6,24,0]},
-  {img:'Folia-Science-Technology-scaled-1.jpg',k:'Science',sf:'5,400',pub:false,o:{L:12,W:7,stories:1,h:4.3,glass:[0,4],louver:true,rtu:true},sc:42,txt:'Lab-ready classrooms with service zones built into the frame.',c:[14,20,8,14,0]},
-  {img:'Folia-Complete-Campus.jpg',k:'Campus',sf:'Mix and match',pub:false,campus:true,sc:20,txt:'Phase a whole campus with the same system, one building at a time.',c:[74,144,46,82,2]}
+  {img:'Folia-MPR-scaled-1.jpg',k:'Multipurpose',sf:'Sized per program',pub:false,o:{L:10,W:8,stories:1,h:6,glass:[0,1,3,4],clerestory:true,sideGlass:true,pv:false},sc:40,txt:'A tall, open room for assemblies, dining and events.',c:[12,18,10,16,0]},
+  {img:'Folia-Gym-scaled-1.jpg',k:'Gym',sf:'Sized per program',pub:false,o:{L:14,W:10,stories:1,h:7.5,bay:3.5,glass:[1],clerestory:true,pv:false},sc:31,txt:'Long-span frames with clerestory daylight.',c:[16,26,6,24,0]},
+  {img:'Folia-Science-Technology-scaled-1.jpg',k:'Science',sf:'Sized per program',pub:false,o:{L:12,W:7,stories:1,h:4.3,glass:[0,4],louver:true,rtu:true},sc:42,txt:'Lab-ready classrooms with service zones built into the frame.',c:[14,20,8,14,0]},
+  {img:'Folia-Complete-Campus.jpg',k:'Full campus',sf:'Mix and match',pub:false,campus:true,sc:20,txt:'Phase a whole campus with the same system, one building at a time.',c:[74,144,46,82,2]}
 ];
 const tabs=document.getElementById('tabs');
 tabs.innerHTML=TYPES.map((t,i)=>`<button class="tab${i===1?' on':''}" data-i="${i}">${t.k}</button>`).join('');
@@ -708,7 +720,7 @@ function renderKit(i){
   const s=document.getElementById('kitIso'); s.innerHTML=`<g class="fade">${svg}</g>`;
   const names=['Braced frames','Wall panels','Curtainwall units','Roof panels','Stairs'];
   document.getElementById('kitInfo').innerHTML=`<div class="fade"><figure class="kit-photo"><img src="assets/${t.img}" alt="Folia ${t.k} rendering"><figcaption>Rendering</figcaption></figure><div class="mono muted">Building type</div><h3>${t.k}</h3><p class="muted" style="margin:0">${t.txt}</p>
-  <div class="sf">${t.sf}${/\d/.test(t.sf)?' <span style="font-size:18px;font-weight:500">sf</span>':''}</div>${t.pub?'<span class="pub">Published Folia plan</span>':'<span class="sample">Sample size</span>'}
+  <div class="sf">${t.sf}${/\d/.test(t.sf)?' <span style="font-size:18px;font-weight:500">sf</span>':''}</div>${t.pub?'<span class="pub">Published Folia plan</span>':'<span class="sample">Size set with the Folia team</span>'}
   <div class="counts">${names.map((n,j)=>`<div><span>${n}</span><b>${t.c[j]||'–'}</b></div>`).join('')}<div style="border:0"><span class="muted" style="font-size:12px">Part counts are sample figures</span></div></div></div>`;
 }
 tabs.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;tabs.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderKit(+b.dataset.i);});
@@ -761,10 +773,8 @@ function renderCfg(){
   const roomSf=layout.reduce((a,i)=>a+ROOMS[i].sf,0), gross=Math.round(roomSf*1.25/10)*10;
   document.getElementById('roomCount').textContent=layout.length+' rooms';
   document.getElementById('oSf').textContent=gross.toLocaleString()+' sf';
-  const start=document.getElementById('start').value||'2027-03';
+  const start='2027-03';
   const folia=gross?Math.round(14+gross/1500):0, conv=folia+12;
-  document.getElementById('oDate').textContent=gross?addMonths(start,folia):'–';
-  document.getElementById('oConv').textContent=gross?`Conventional build: about ${addMonths(start,conv)}`:'';
   const badge=document.getElementById('badge');
   if(stories===2&&shape==='L'&&gross>=14000&&gross<=16000){badge.className='badge ok';badge.innerHTML='<i>✓</i><span>Matches the DSA Pre-Check two-story plan, the fastest approval path.</span>';}
   else{badge.className='badge note';badge.innerHTML='<span>Tip: two stories, L-shape and about 15,100 sf matches the DSA Pre-Check plan.</span>';}
@@ -824,7 +834,7 @@ document.getElementById('cfgPlan').addEventListener('click',e=>{const g=e.target
     if(g)layout.splice(+g.dataset.idx,0,+ri);else layout.push(+ri);selIdx=null;renderCfg();});
 })();
 document.getElementById('ftabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;planFloor=+b.dataset.f;drawPlan();});
-function monthLabel(ym,m){const [y,mo]=ym.split('-').map(Number);const d=new Date(y,mo-1+m,1);return d.toLocaleString('en-US',{month:'short',year:'2-digit'});}
+function monthLabel(ym,m){return 'Mo '+m;}
 document.getElementById('schedBtn').addEventListener('click',()=>{
   if(!CFG||CFG.empty)return;const M=CFG.folia,C=CFG.conv,st=CFG.start,pre=CFG.pre;
   const d=Math.round(M*.22),dsa=Math.max(2,Math.round(M*(pre?.13:.2))),fab=Math.round(M*.3),clo=1,asm=Math.max(2,M-d-dsa-fab-clo);
@@ -832,10 +842,10 @@ document.getElementById('schedBtn').addEventListener('click',()=>{
   const T=C+2,pc=v=>(v/T*100)+'%';
   let h=`<div class="g-axis2"><div></div><div class="t">`+[...Array(Math.floor(T/6)+1).keys()].map(i=>`<span style="left:${pc(i*6)}">${monthLabel(st,i*6)}</span>`).join('')+`</div></div>`;
   rows.forEach(r=>{h+=`<div class="g-row2"><div>${r[0]}</div><div class="tr" style="--m:${100/T}%"><div class="b" style="left:${pc(r[1])};width:${pc(r[2])};background:${r[3]}"></div></div></div>`;});
-  h+=`<div class="g-row2"><div><b>Students move in</b></div><div class="tr" style="--m:${100/T}%"><div class="ms" style="left:${pc(M)}"></div></div></div>`;
+  h+=`<div class="g-row2"><div><b>Occupancy</b></div><div class="tr" style="--m:${100/T}%"><div class="ms" style="left:${pc(M)}"></div></div></div>`;
   h+=`<div class="g-row2 conv"><div>Conventional build</div><div class="tr" style="--m:${100/T}%"><div class="b" style="left:0;width:${pc(C)};background:#B5B9B6"></div></div></div>`;
   document.getElementById('gantt').innerHTML=h;
-  document.getElementById('schedTitle').textContent=`About ${M} months to move-in`;
+  document.getElementById('schedTitle').textContent=`About ${M} months, design to occupancy`;
   document.getElementById('schedSub').textContent=`${document.getElementById('oSf').textContent} · ${pre?'Pre-Check plan':'custom layout'} · conventional build about ${C} months. Durations are illustrative until Blach confirms.`;
   document.getElementById('schedModal').classList.add('on');
 });
@@ -920,7 +930,6 @@ strip.addEventListener('dragleave',()=>strip.classList.remove('drag'));
 strip.addEventListener('drop',e=>{e.preventDefault();strip.classList.remove('drag');const i=e.dataTransfer.getData('text/plain');if(i!=='')layout.push(+i);renderCfg();});
 strip.addEventListener('click',e=>{const b=e.target.closest('button[data-j]');if(!b)return;layout.splice(+b.dataset.j,1);renderCfg();});
 document.getElementById('stories').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;stories=+b.dataset.s;document.querySelectorAll('#stories button').forEach(x=>x.classList.toggle('on',x===b));renderCfg();});
-document.getElementById('start').addEventListener('input',renderCfg);
 (()=>{const box=document.querySelector('.iso-cfg');let down=false,lx=0,raf=null,target=null;
   const anim=()=>{if(target===null)return;const d=target-yaw;if(Math.abs(d)<.002){yaw=target;target=null;drawCfg3D();return;}yaw+=d*.18;drawCfg3D();raf=requestAnimationFrame(anim);};
   box.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;down=true;lx=e.clientX;box.classList.add('dragging');box.setPointerCapture(e.pointerId);target=null;});
@@ -933,7 +942,7 @@ document.getElementById('shapes').addEventListener('click',e=>{const b=e.target.
 document.getElementById('reset').addEventListener('click',std);
 document.getElementById('send').addEventListener('click',()=>{
   const counts={};layout.forEach(i=>counts[ROOMS[i].k]=(counts[ROOMS[i].k]||0)+1);
-  document.getElementById('mSum').innerHTML=Object.entries(counts).map(([k,v])=>`<li>${v} × ${k}</li>`).join('')+`<li>${{bar:'Bar',L:'L-shape',U:'Courtyard',two:'Two wings'}[shape]} · ${stories===2?'Two':'One'} story · ${document.getElementById('oSf').textContent}</li><li>Move-in estimate: ${document.getElementById('oDate').textContent}</li>`;
+  document.getElementById('mSum').innerHTML=Object.entries(counts).map(([k,v])=>`<li>${v} × ${k}</li>`).join('')+`<li>${{bar:'Bar',L:'L-shape',U:'Courtyard',two:'Two wings'}[shape]} · ${stories===2?'Two':'One'} story · ${document.getElementById('oSf').textContent}</li>`;
   document.getElementById('modal').classList.add('on');
 });
 std();
