@@ -341,6 +341,13 @@ html,body{overflow-x:hidden}
   *{transition:none!important;animation:none!important}
   .reveal{opacity:1;transform:none}
 }
+.intro-modal{position:fixed;inset:0;background:rgba(20,30,24,.62);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.intro-modal.on{display:flex}
+.intro-card{background:#fff;border-radius:16px;max-width:560px;width:100%;padding:30px 32px;box-shadow:0 30px 70px rgba(0,0,0,.3);animation:rise .4s}
+.intro-card h3{font-size:24px;margin:16px 0 10px;color:var(--ink)}
+.intro-card p{font-size:15px;color:#3A403C;margin:0 0 10px}
+.intro-card ul{padding-left:18px;margin:0 0 20px;font-size:14px;color:#3A403C}
+.intro-card li{margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -546,6 +553,23 @@ html,body{overflow-x:hidden}
   </div>
 </footer>
 
+<div class="intro-modal" id="introModal" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+  <div class="intro-card">
+    <img src="assets/folia-logo.png" alt="Folia" style="height:30px">
+    <span class="sample" style="margin-left:10px">Concept preview</span>
+    <h3 id="introTitle">A quick concept, not the finished site</h3>
+    <p>Collective Work put this together quickly, using AI and JavaScript, to show what buildfolia.com could feel like. The figures marked &ldquo;sample&rdquo; are placeholders.</p>
+    <p><b>Making it real takes many more hours of careful work:</b></p>
+    <ul>
+      <li><b>Accurate building drawings</b> rebuilt from Folia&rsquo;s actual components, plans and DSA documents, with QKA and Blach.</li>
+      <li><b>Every number checked</b>: schedules, sizes and claims confirmed by Blach before anything goes public.</li>
+      <li><b>Built properly in Webflow</b>, so marketing can edit text, photos and figures without touching code.</li>
+      <li><b>Tested everywhere</b>: phones, tablets and browsers, plus accessibility for keyboard and screen-reader users.</li>
+      <li><b>Fast and reliable</b>: performance tuning, search setup, and the planner connected to the Folia team&rsquo;s inbox.</li>
+    </ul>
+    <button class="btn" id="introGo">Explore the concept</button>
+  </div>
+</div>
 <div class="modal" id="schedModal"><div class="card sched">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px"><div><span class="sample">Illustrative schedule</span><h3 style="margin-top:10px" id="schedTitle">Your schedule</h3><p class="muted" style="font-size:13px;margin:0" id="schedSub"></p></div><button class="xbtn" onclick="document.getElementById('schedModal').classList.remove('on')" aria-label="Close">&times;</button></div>
   <div id="gantt"></div>
@@ -1014,6 +1038,14 @@ const SH=new URLSearchParams(location.search).get('shape');if(SH){const b=docume
 if(new URLSearchParams(location.search).get('sched'))document.getElementById('schedBtn').click();
 const SWAP=new URLSearchParams(location.search).get('swap');if(SWAP){const [a1,b1]=SWAP.split(',').map(Number);[layout[a1],layout[b1]]=[layout[b1],layout[a1]];renderCfg();}
 
+/* ---------- intro modal ---------- */
+(()=>{const m=document.getElementById('introModal');let seen=false;try{seen=sessionStorage.getItem('foliaIntro')==='1';}catch(e){}
+  if(!seen&&!new URLSearchParams(location.search).get('view')){m.classList.add('on');}
+  const close=()=>{m.classList.remove('on');try{sessionStorage.setItem('foliaIntro','1');}catch(e){}};
+  document.getElementById('introGo').addEventListener('click',close);
+  m.addEventListener('click',e=>{if(e.target===m)close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('on'))close();});
+})();
 /* ---------- preview helper: ?view=build|kit|floor|time|configure ---------- */
 const VIEW=new URLSearchParams(location.search).get('view');
 if(VIEW){document.querySelectorAll('header.hero,section').forEach(el=>{if(el.id!==VIEW)el.style.display='none';});
