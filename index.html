@@ -224,7 +224,8 @@ section.block{padding:64px 0;border-top:1px solid var(--rule)}
 .cal-row b{font-size:15px}
 .track{position:relative;height:38px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/36 - 1px),var(--rule) calc(100%/36 - 1px) calc(100%/36))}
 .seg{position:absolute;top:4px;height:30px;border-radius:4px;font-size:11.5px;font-weight:600;color:#fff;display:flex;align-items:center;padding:0 10px;white-space:nowrap;overflow:hidden;width:0;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.seg.l2{top:22px;height:14px;font-size:0}
+.seg.l2{top:36px;height:20px;font-size:10.5px}
+.track.two{height:58px}
 .cal-axis{display:grid;grid-template-columns:150px 1fr 90px;gap:16px;font-family:var(--mono);font-size:11px;color:var(--muted)}
 .cal-axis div:nth-child(2){display:flex;justify-content:space-between}
 .saved{font-size:22px;font-weight:600;color:var(--green)}
@@ -484,17 +485,17 @@ html,body{overflow-x:hidden}
         <div class="seg" data-w="50" style="left:47%;background:#4C544E">Construction on site</div>
         <div class="seg" data-w="3" style="left:97%;background:#2E3430" title="DSA closeout"></div>
       </div><span class="mono">36 mo</span></div>
-      <div class="cal-row"><b>Folia</b><div class="track">
+      <div class="cal-row"><b>Folia</b><div class="track two">
         <div class="seg" data-w="14" style="left:0;background:#A0BC79;color:#222">Design</div>
         <div class="seg" data-w="11" style="left:14%;background:var(--green)" title="DSA review, shortened by Pre-Check">DSA</div>
         <div class="seg" data-w="22" style="left:25%;background:var(--green-d)">Factory</div>
-        <div class="seg l2" data-w="22" style="left:25%;background:var(--blue)"></div>
+        <div class="seg l2" data-w="22" style="left:25%;background:var(--blue)">Site work</div>
         <div class="seg" data-w="16" style="left:47%;background:#0A4F2A">Assembly + interiors</div>
         <div class="seg" data-w="3" style="left:63%;background:#06331B" title="DSA closeout"></div>
       </div><span class="mono">24 mo</span></div>
       <div class="cal-axis"><div></div><div><span>0</span><span>6</span><span>12</span><span>18</span><span>24</span><span>30</span><span>36 mo</span></div><div></div></div>
       <div style="display:flex;justify-content:space-between;align-items:end;margin-top:26px;flex-wrap:wrap;gap:12px">
-        <div><span class="saved">About a year sooner</span><div class="muted" style="font-size:13px">Blue bar: site work running alongside the factory.</div></div>
+        <div><span class="saved">About a year sooner</span><div class="muted" style="font-size:13px">Factory and site work run at the same time.</div></div>
         <span class="sample">Illustrative durations &middot; standard Folia vs. comparable site-built</span>
       </div>
     </div>
