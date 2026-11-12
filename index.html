@@ -122,7 +122,8 @@ nav ul a{text-decoration:none;opacity:.8} nav ul a:hover{opacity:1;color:var(--g
 .playbtn{flex:none;width:52px;height:52px;border-radius:50%;border:0;background:var(--green);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
 .playbtn:hover{background:var(--green-d);transform:scale(1.05)}
 .playbtn svg{width:22px;height:22px;fill:currentColor}
-.bcap{display:flex;gap:14px;align-items:baseline;min-height:52px}
+.bcap{display:flex;gap:14px;align-items:center;min-height:52px}
+.capico{width:64px;height:38px;flex:none;background:#fff;border:1px solid var(--rule);border-radius:8px;padding:4px}
 .bcap .n{font-family:var(--mono);font-size:13px;color:var(--green-d);font-weight:500}
 .bcap b{font-size:18px;font-weight:600}
 .bcap .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;margin-left:10px;padding:2px 7px;border-radius:3px;vertical-align:2px}
@@ -366,10 +367,6 @@ html,body{overflow-x:hidden}
         <div class="hero-badge"><img src="assets/timely-construction.png" alt=""><div><b>40,000 sf &middot; 22 classrooms &middot; 9 months</b><span>Cupertino High School, built with Folia</span></div></div>
       </div>
     </div>
-    <div class="tray reveal">
-      <div class="tray-head"><span class="mono muted">The system &middot; two-story building</span><span class="sample">Sample counts</span></div>
-      <div class="tray-grid"><svg id="trayIso" viewBox="-30 -70 760 560"></svg><div class="parts" id="parts"></div></div>
-    </div>
     <div class="proof">
       <div><img src="assets/timely-construction.png" alt=""><b>1 yr+</b><span>faster to occupancy*</span></div>
       <div><img src="assets/roi-bank.png" alt=""><b>10&ndash;20%</b><span>lower cost*</span></div>
@@ -419,7 +416,7 @@ html,body{overflow-x:hidden}
       </div>
       <div class="bbar">
         <div class="bnav"><button id="bPrev" class="arrowbtn" aria-label="Previous step"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button id="play" class="playbtn" aria-label="Play"><svg viewBox="0 0 24 24" id="playIco"><path d="M8 5v14l11-7z"/></svg></button><button id="bNext" class="arrowbtn" aria-label="Next step"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>
-        <div class="bcap"><span class="n" id="capN">01</span><div><b id="capT"></b><span class="tag" id="capTag"></span><p id="capD"></p></div></div>
+        <div class="bcap"><svg class="capico" id="capIco" viewBox="0 0 100 58"></svg><span class="n" id="capN">01</span><div><b id="capT"></b><span class="tag" id="capTag"></span><p id="capD"></p></div></div>
       </div>
       <div class="stepper" id="stepper"></div>
     </div>
@@ -660,19 +657,8 @@ const PARTS=[
   ['Elevator','×1',`<g fill="none" stroke="#1F2522" stroke-width="2"><rect x="34" y="6" width="32" height="46"/><path d="M50 6V52M42 18l4-5 4 5M42 40l4 5 4-5"/></g>`],
   ['Stairs','×2',`<g fill="none" stroke="#1F2522" stroke-width="2"><path d="M16 52 V44 H28 V36 H40 V28 H52 V20 H64 V12 H80"/></g>`]
 ];
-document.getElementById('parts').innerHTML=PARTS.map((p,i)=>`<div class="part" data-i="${i}"><svg viewBox="0 0 100 58">${p[2]}</svg><b>${p[0]}</b><span>${p[1]}</span></div>`).join('');
 /* ---------- dynamic top: tray iso, hero compare, count-up, venn ---------- */
 setTimeout(()=>{
-  // tray mini building
-  const tP=mkP(24,330,215), TB=building({L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true,P0:tP});
-  const TL=['slab','frameB','deck','frameF','panel','glass','roof','pv','extra'];
-  document.getElementById('trayIso').innerHTML=`<ellipse cx="350" cy="470" rx="330" ry="46" fill="#ECEBE6"/>`+TL.map(k=>`<g id="T_${k}">${TB[k]||''}</g>`).join('');
-  const MAP=[['frameB','frameF'],['frameB','extra'],['panel'],['glass'],['roof','pv'],['extra','deck'],['extra','deck']];
-  const cards=[...document.querySelectorAll('#parts .part')];let auto=true,ai=0;
-  const show=i=>{cards.forEach((c,j)=>c.classList.toggle('on',j===i));TL.forEach(k=>{const g=document.getElementById('T_'+k);g.style.opacity=(i===null||k==='slab'||MAP[i].includes(k))?1:.12;});};
-  cards.forEach((c,i)=>{c.addEventListener('mouseenter',()=>{auto=false;show(i);});c.addEventListener('click',()=>{auto=false;show(i);});});
-  document.getElementById('parts').addEventListener('mouseleave',()=>{show(null);});
-  setInterval(()=>{if(!auto)return;show(ai%cards.length);ai++;},1800);
   // hero compare drawing (L-shaped two-story)
   const hP=mkP(21,420,185);
   document.getElementById('heroIso').innerHTML=drawBld({L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true,dx:0,dy:0},hP)+drawBldRot({L:8,W:6,stories:2,h:3.7,glass:[1,2],balcony:true,dx:8,dy:6},hP);
@@ -729,6 +715,7 @@ function renderBuild(f){
   document.getElementById('capT').textContent=st[0].replace('&ndash;','–');
   const tg=document.getElementById('capTag');tg.className='tag '+st[1];tg.textContent=st[1]==='off'?'Made off-site':'On site';
   document.getElementById('capD').innerHTML=st[2];
+  const ICO=[null,0,null,1,2,3,4,6];const ii=ICO[cur];document.getElementById('capIco').style.visibility=ii===null?'hidden':'visible';if(ii!==null)document.getElementById('capIco').innerHTML=PARTS[ii][2];
   document.getElementById('finalPhoto').classList.toggle('on',f>7.35);
 }
 function tick(){const d=target-prog;if(Math.abs(d)<.002){prog=target;renderBuild(prog);rafB=null;return;}prog+=d*.09;renderBuild(prog);rafB=requestAnimationFrame(tick);}
