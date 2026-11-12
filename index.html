@@ -123,6 +123,11 @@ nav ul a{text-decoration:none;opacity:.8} nav ul a:hover{opacity:1;color:var(--g
 .playbtn:hover{background:var(--green-d);transform:scale(1.05)}
 .playbtn svg{width:22px;height:22px;fill:currentColor}
 .bcap{display:flex;gap:14px;align-items:center;min-height:52px}
+.steptile{position:absolute;top:16px;left:18px;z-index:3;width:132px;background:#fff;border:1px solid var(--rule);border-radius:10px;padding:10px 10px 8px;box-shadow:0 8px 22px rgba(0,0,0,.08);text-align:center}
+.steptile svg{width:100%;height:70px;display:block}
+.steptile span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--green-d);margin-top:4px}
+.steptile.pop{animation:tilepop .45s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes tilepop{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
 .capico{width:64px;height:38px;flex:none;background:#fff;border:1px solid var(--rule);border-radius:8px;padding:4px}
 .bcap .n{font-family:var(--mono);font-size:13px;color:var(--green-d);font-weight:500}
 .bcap b{font-size:18px;font-weight:600}
@@ -412,11 +417,12 @@ html,body{overflow-x:hidden}
       <div class="stage">
         <div class="legend"><span><i style="background:#E4F0DC;border:1px solid #0C6938"></i>Made off-site</span><span><i style="background:#E1E9F1;border:1px solid #125788"></i>Built on site</span></div>
         <figure id="finalPhoto" class="final-photo"><img src="assets/Folia-Two-Story-scaled-1.jpg" alt="Folia two-story building section rendering"><figcaption>The finished building &middot; rendering</figcaption></figure>
+        <div class="steptile" id="stepTile"><svg viewBox="0 0 100 70" id="stepIco"></svg><span id="stepTileL"></span></div>
         <svg id="iso" viewBox="-60 -110 980 820" aria-label="Folia building assembling step by step"></svg>
       </div>
       <div class="bbar">
         <div class="bnav"><button id="bPrev" class="arrowbtn" aria-label="Previous step"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button id="play" class="playbtn" aria-label="Play"><svg viewBox="0 0 24 24" id="playIco"><path d="M8 5v14l11-7z"/></svg></button><button id="bNext" class="arrowbtn" aria-label="Next step"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>
-        <div class="bcap"><svg class="capico" id="capIco" viewBox="0 0 100 58"></svg><span class="n" id="capN">01</span><div><b id="capT"></b><span class="tag" id="capTag"></span><p id="capD"></p></div></div>
+        <div class="bcap"><span class="n" id="capN">01</span><div><b id="capT"></b><span class="tag" id="capTag"></span><p id="capD"></p></div></div>
       </div>
       <div class="stepper" id="stepper"></div>
     </div>
@@ -689,6 +695,16 @@ const STEPS=[
   ['Interiors','on','Interior walls aren&rsquo;t load-bearing, so rooms can change later.']
 ];
 document.getElementById('stepper').innerHTML=STEPS.map((st,i)=>`<button data-i="${i}"><span class="trk"><i></i></span><span class="l"><em>0${i+1}</em>${st[0]}</span></button>`).join('');
+const STEP_ICONS=[
+ `<g><path d="M10 40 L50 22 L90 40 L50 58 Z" fill="#D9D5C8" stroke="#6E6A5E" stroke-width="1.5"/><path d="M10 40 V48 L50 66 V58 Z" fill="#C9C4B5" stroke="#6E6A5E" stroke-width="1.5"/><path d="M90 40 V48 L50 66 V58 Z" fill="#BDB8A8" stroke="#6E6A5E" stroke-width="1.5"/><path d="M28 44 v12 M50 50 v14 M72 44 v12" stroke="#6E6A5E" stroke-width="3"/></g>`,
+ `<g stroke="#125788" stroke-width="3" fill="none"><path d="M22 64 V10 H78 V64"/><path d="M22 64 L78 10" stroke-width="2"/><path d="M22 37 H78" stroke-width="2"/></g>`,
+ `<g><path d="M10 34 L50 16 L90 34 L50 52 Z" fill="#E9EBEC" stroke="#4E5A61" stroke-width="1.5"/><path d="M18 34 L50 20 M30 34 L62 20 M42 34 L74 20 M54 34 L82 22" stroke="#9AA2A7" stroke-width="1.2"/><path d="M10 34 V42 L50 60 V52 Z" fill="#C4C9CC" stroke="#4E5A61" stroke-width="1.5"/><path d="M90 34 V42 L50 60 V52 Z" fill="#9AA2A7" stroke="#4E5A61" stroke-width="1.5"/></g>`,
+ `<g><rect x="8" y="20" width="84" height="10" fill="#D7A86E" stroke="#8A6236"/><rect x="8" y="36" width="84" height="10" fill="#D7A86E" stroke="#8A6236"/><path d="M8 54 L50 50 L92 54" stroke="#5E6661" stroke-width="4" fill="none"/></g>`,
+ `<g fill="#E9EBEC" stroke="#7C8489" stroke-width="1.5"><rect x="12" y="10" width="22" height="50"/><rect x="39" y="10" width="22" height="50"/><rect x="66" y="10" width="22" height="50" fill="#1E6A9C" stroke="#0E4469"/></g>`,
+ `<g fill="#C8E9EC" stroke="#4A6B80" stroke-width="1.5"><rect x="14" y="10" width="34" height="50"/><rect x="52" y="10" width="34" height="50"/><path d="M31 10 V60 M69 10 V60 M14 40 H86" stroke-width="1"/></g>`,
+ `<g><path d="M14 46 L40 22 L90 22 L64 46 Z" fill="#22394A" stroke="#9FB6C4" stroke-width="1.2"/><path d="M27 34 L77 34 M40 22 L22 46 M53 22 L35 46 M66 22 L48 46 M79 22 L61 46" stroke="#9FB6C4" stroke-width="1"/><circle cx="84" cy="10" r="6" fill="#FAA81B"/></g>`,
+ `<g><rect x="8" y="12" width="84" height="48" fill="#fff" stroke="#4E5A61" stroke-width="1.5"/><rect x="10" y="14" width="36" height="44" fill="#A0BC79"/><rect x="48" y="14" width="42" height="20" fill="#C8E9EC"/><rect x="48" y="36" width="42" height="22" fill="#FED9A1"/><path d="M47 12 V60 M47 35 H92" stroke="#3F7D4E" stroke-width="2.5" stroke-dasharray="5 3"/></g>`
+];
 const isoP=mkP(34,340,250);
 const B=building({L:14,W:6,stories:2,h:3.7,glass:[1,2,4,5],balcony:true,P0:isoP});
 const LAYERS=[['slab',0],['frameB',1],['deck',2],['part',7],['frameF',1],['panel',4],['glass',5],['roof',3],['extra',3],['pv',6]];
@@ -715,7 +731,7 @@ function renderBuild(f){
   document.getElementById('capT').textContent=st[0].replace('&ndash;','–');
   const tg=document.getElementById('capTag');tg.className='tag '+st[1];tg.textContent=st[1]==='off'?'Made off-site':'On site';
   document.getElementById('capD').innerHTML=st[2];
-  const ICO=[null,0,null,1,2,3,4,6];const ii=ICO[cur];document.getElementById('capIco').style.visibility=ii===null?'hidden':'visible';if(ii!==null)document.getElementById('capIco').innerHTML=PARTS[ii][2];
+  if(renderBuild._last!==cur){renderBuild._last=cur;const t=document.getElementById('stepTile');document.getElementById('stepIco').innerHTML=STEP_ICONS[cur];document.getElementById('stepTileL').textContent=st[0];t.classList.remove('pop');void t.offsetWidth;t.classList.add('pop');}
   document.getElementById('finalPhoto').classList.toggle('on',f>7.35);
 }
 function tick(){const d=target-prog;if(Math.abs(d)<.002){prog=target;renderBuild(prog);rafB=null;return;}prog+=d*.09;renderBuild(prog);rafB=requestAnimationFrame(tick);}
