@@ -344,7 +344,7 @@ html,body{overflow-x:hidden}
 }
 .intro-modal{position:fixed;inset:0;background:rgba(20,30,24,.62);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
 .intro-modal.on{display:flex}
-.intro-card{background:#fff;border-radius:16px;max-width:560px;width:100%;padding:30px 32px;box-shadow:0 30px 70px rgba(0,0,0,.3);animation:rise .4s}
+.intro-card{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:calc(100vh - 40px);overflow-y:auto;padding:30px 32px;box-shadow:0 30px 70px rgba(0,0,0,.3);animation:rise .4s}
 .intro-card h3{font-size:24px;margin:16px 0 10px;color:var(--ink)}
 .intro-card p{font-size:15px;color:#3A403C;margin:0 0 10px}
 .intro-card ul{padding-left:18px;margin:0 0 20px;font-size:14px;color:#3A403C}
@@ -560,14 +560,14 @@ html,body{overflow-x:hidden}
     <img src="assets/folia-logo.png" alt="Folia" style="height:30px">
     <span class="sample" style="margin-left:10px">Concept preview</span>
     <h3 id="introTitle">A quick concept, not the finished site</h3>
-    <p>Collective Work put this together quickly, using AI and JavaScript, to show what buildfolia.com could feel like, before any research or strategy work. The figures marked &ldquo;sample&rdquo; are placeholders.</p>
+    <p>Collective Work built this as a quick JavaScript prototype to show what buildfolia.com could feel like, before any research or strategy work. The figures marked &ldquo;sample&rdquo; are placeholders.</p>
     <p class="analogy">Think of it as a chair made of cardboard and masking tape. It shows the shape and how it might feel, but it won&rsquo;t hold any weight. A public site has to carry real traffic, real content updates and real security demands for years, so it needs to be built properly from the start.</p>
-    <p><b>Making it real takes many more hours of careful work:</b></p>
+    <p><b>A full version would take many more hours of careful work:</b></p>
     <ul>
       <li><b>Shaped by research</b>: marketing and competitor research into how districts and owners choose builders would refine the messaging, content and features.</li>
-      <li><b>Accurate building drawings</b> rebuilt from Folia&rsquo;s actual components, plans and DSA documents, with QKA and Blach.</li>
+      <li><b>Accurate building drawings</b>: rebuilt from Folia&rsquo;s actual components, plans and DSA documents, with QKA and Blach.</li>
       <li><b>Every number checked</b>: schedules, sizes and claims confirmed by Blach before anything goes public.</li>
-      <li><b>Built and coded properly and securely in Webflow</b>, for mobile and desktop, so marketing can edit text, photos and figures without touching code.</li>
+      <li><b>Built properly and securely in Webflow</b>: for mobile and desktop, so marketing can edit text, photos and figures without touching code.</li>
       <li><b>Tested everywhere</b>: phones, tablets and browsers, plus accessibility for keyboard and screen-reader users.</li>
       <li><b>Fast and reliable</b>: performance tuning, search setup, and the planner connected to the Folia team&rsquo;s inbox.</li>
     </ul>
